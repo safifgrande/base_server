@@ -1,0 +1,325 @@
+[
+    {
+        "name": "clientGetEnv",
+        "private": false
+    },
+    {
+        "name": "webHooks_clientGetRegion",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "clientUser",
+        "private": false
+    },
+    {
+        "name": "adminManageClient",
+        "private": false
+    },
+    {
+        "name": "clientReportDefaultFilter",
+        "private": false
+    },
+    {
+        "name": "clientVoidReason",
+        "private": false
+    },
+    {
+        "name": "clientProductModifier",
+        "private": false
+    },
+    {
+        "name": "clientBillingHistory",
+        "private": false
+    },
+    {
+        "name": "intSendEmail",
+        "private": true
+    },
+    {
+        "name": "intRegisterOrExtend",
+        "private": true
+    },
+    {
+        "name": "clientPaymentMedia",
+        "private": false
+    },
+    {
+        "name": "clientProductDepartment",
+        "private": false
+    },
+    {
+        "name": "intGenerateCustomJwt",
+        "private": false
+    },
+    {
+        "name": "webHooks_clientBusinessCategory",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "clientTypeSales",
+        "private": false
+    },
+    {
+        "name": "adminRegisterClient",
+        "private": false
+    },
+    {
+        "name": "clientDisbursement",
+        "private": false
+    },
+    {
+        "name": "intValidation",
+        "private": true
+    },
+    {
+        "name": "intProductPartOfPackageItem",
+        "private": true
+    },
+    {
+        "name": "intPartofPackage",
+        "private": true
+    },
+    {
+        "name": "clientStockAudit",
+        "private": false
+    },
+    {
+        "name": "clientPromo",
+        "private": false
+    },
+    {
+        "name": "clientMember",
+        "private": false
+    },
+    {
+        "name": "intRemoveImage",
+        "private": false
+    },
+    {
+        "name": "webHooks_clientGetCity",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "webHooks_whCallbackCreatedAccount",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "clientProductPackage",
+        "private": false
+    },
+    {
+        "name": "clientDiscount",
+        "private": false
+    },
+    {
+        "name": "clientProductVariant",
+        "private": false
+    },
+    {
+        "name": "handleCatchError",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "webHooks_whCallbackXendit",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "intProductAvailability",
+        "private": true
+    },
+    {
+        "name": "intUserContext",
+        "private": true
+    },
+    {
+        "name": "adminValidationAcl",
+        "private": false
+    },
+    {
+        "name": "clientUserDevice",
+        "private": false
+    },
+    {
+        "name": "webHooks_clientGetProvince",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "adminEwallet",
+        "private": false
+    },
+    {
+        "name": "clientGeneralSetting",
+        "private": false
+    },
+    {
+        "name": "webHooks_version",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "clientBillDesign",
+        "private": false
+    },
+    {
+        "name": "intPromoPostHandle",
+        "private": true
+    },
+    {
+        "name": "intOutletsFromBusiness",
+        "private": true
+    },
+    {
+        "name": "sendUserConfirmationEmail",
+        "private": true,
+        "run_as_system": true
+    },
+    {
+        "name": "webhook_clientGetViewBill",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "intTransactionInvoiceDetail",
+        "private": true
+    },
+    {
+        "name": "clientUserLicenseDevice",
+        "private": false
+    },
+    {
+        "name": "SendErrorToGoogleChat",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "clientPosId",
+        "private": false
+    },
+    {
+        "name": "clientCommission",
+        "private": false
+    },
+    {
+        "name": "clientPriceLevel",
+        "private": false
+    },
+    {
+        "name": "clientOutlets",
+        "private": false
+    },
+    {
+        "name": "clientEwallet",
+        "private": false
+    },
+    {
+        "name": "intTriggerFillInXenditTransactions",
+        "private": true
+    },
+    {
+        "name": "clientBankAccount",
+        "private": false
+    },
+    {
+        "name": "intSystemQuery",
+        "private": true,
+        "run_as_system": true
+    },
+    {
+        "name": "clientGenJWTReport",
+        "private": false
+    },
+    {
+        "name": "clientSubscription",
+        "private": false
+    },
+    {
+        "name": "webHooks_whXenditCallbackDisbursement",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "intCheckLoginExpired",
+        "private": true
+    },
+    {
+        "name": "clientUserAcl",
+        "private": false
+    },
+    {
+        "name": "clientInvoice",
+        "private": false
+    },
+    {
+        "name": "clientBusinessPlan",
+        "private": false
+    },
+    {
+        "name": "clientTaxes",
+        "private": false
+    },
+    {
+        "name": "intStoringDefaultData",
+        "private": true
+    },
+    {
+        "name": "clientTableLayout",
+        "private": false
+    },
+    {
+        "name": "webHooks_whXenditCallbackTransaction",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "clientUserRole",
+        "private": false
+    },
+    {
+        "name": "clientProductMenu",
+        "private": false
+    },
+    {
+        "name": "clientRefundReasons",
+        "private": false
+    },
+    {
+        "name": "clientProduct",
+        "private": false
+    },
+    {
+        "name": "intTranslatingAcl",
+        "private": true
+    },
+    {
+        "name": "clientUserBusiness",
+        "private": false
+    },
+    {
+        "name": "clientChangePassword",
+        "private": false
+    },
+    {
+        "name": "clientProductGroup",
+        "private": false
+    },
+    {
+        "name": "clientProductStock",
+        "private": false
+    },
+    {
+        "name": "clientRoom",
+        "private": false
+    },
+    {
+        "name": "intGenerateView",
+        "private": false,
+        "run_as_system": true
+    }
+]
