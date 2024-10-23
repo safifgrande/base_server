@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const subs_object = await subsObject(payload);
     if (!subs_object[payload.method])
@@ -510,7 +510,9 @@ const subsObject = async (payload) => {
       status: data.payment_media_name === "other" ? "pending" : "paid",
       type: "subscribed",
       operator: license ? "public" : "internal",
-      masterLicenseId: data?.business_plan_id ? BSON.ObjectId(data?.business_plan_id) : null,
+      masterLicenseId: data?.business_plan_id
+        ? BSON.ObjectId(data?.business_plan_id)
+        : null,
       master_license_price_level: data?.price_level?._id ?? null,
       master_license_discount: data?.master_discount?._id ?? null,
       price: parseFloat(data.price),
@@ -531,9 +533,18 @@ const subsObject = async (payload) => {
 
     // perhitungan payment harga total sudah include tax jadi , perhitungannya di hitung dari total , subtotal, tax
     data.price = data?.price_level?.price ?? data.total;
-    data.total_payment = data.price === 0 ? paerseFloat(0) : data.price_level ? (data?.price_level?.price) * parseFloat(data.total_device) : data.total;
-    data.sub_total = data.price === 0 ? paerseFloat(0) : data.total_payment / (data?.price_level?.tax ?? data.tax / 100 + 1);
-    data.taxes = data.price === 0 ? paerseFloat(0) : data.total_payment - data.sub_total;
+    data.total_payment =
+      data.price === 0
+        ? paerseFloat(0)
+        : data.price_level
+        ? data?.price_level?.price * parseFloat(data.total_device)
+        : data.total;
+    data.sub_total =
+      data.price === 0
+        ? paerseFloat(0)
+        : data.total_payment / (data?.price_level?.tax ?? data.tax / 100 + 1);
+    data.taxes =
+      data.price === 0 ? paerseFloat(0) : data.total_payment - data.sub_total;
   };
 
   const formatReturn = (list_user_license) => {
@@ -897,10 +908,10 @@ const subsObject = async (payload) => {
 
     if (data?.duration >= 1 && data?.total > -1) {
       data.license_name = "custom";
-      data.license_duration = data.duration
-      data.price_level = null
-      data.master_discount = null
-      return
+      data.license_duration = data.duration;
+      data.price_level = null;
+      data.master_discount = null;
+      return;
     }
 
     let filterPrice = {
@@ -995,7 +1006,8 @@ const subsObject = async (payload) => {
     if (license_data.discounts.length <= 0) throw new Error("E30088BE");
 
     data.price_level = license_data.master_license_price_level[0];
-    data.license_duration = license_data.master_license_price_level[0].expiryDay
+    data.license_duration =
+      license_data.master_license_price_level[0].expiryDay;
     data.license_name = license_data.name;
     data.master_discount = license_data.discounts[0];
   };

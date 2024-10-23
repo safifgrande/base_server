@@ -1,4 +1,4 @@
-exports = () => {
+module.exports = () => {
   try {
     return {
       name: "BO",

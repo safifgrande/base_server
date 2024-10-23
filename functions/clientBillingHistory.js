@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const billingHistory = generalFunction(payload);
 
@@ -59,7 +59,6 @@ const generalFunction = (payload) => {
 
     const billing_detail = await getDetailBilling();
 
-
     if (billing_detail.length == 0) {
       throw new Error("E30093BE");
     }
@@ -73,7 +72,12 @@ const generalFunction = (payload) => {
     detail.total_details = [
       {
         label: "Sub Total",
-        value: detail.sub_total > 0 ? detail.sub_total : detail.sub_total === 0 ? 0 : "",
+        value:
+          detail.sub_total > 0
+            ? detail.sub_total
+            : detail.sub_total === 0
+            ? 0
+            : "",
       },
       // {
       //   label: "Diskon/Promo", //TODO : dipakek kalau sudah menerapkan promo / diskon
@@ -86,20 +90,20 @@ const generalFunction = (payload) => {
       {
         label: "Total",
         value: detail.grandTotal,
-      }
+      },
     ];
 
     detail.devices = detail.devices.map((eachdevice) => {
       const detailExpired =
         detail?.detailDevicesExpired?.length > 0
           ? detail.detailDevicesExpired.find(
-            (e) => e.devices == eachdevice._id.toString()
-          )
+              (e) => e.devices == eachdevice._id.toString()
+            )
           : [];
 
-      let prev_expired = detailExpired?.prevExpired ? new Date(
-        detailExpired?.prevExpired
-      ) : null
+      let prev_expired = detailExpired?.prevExpired
+        ? new Date(detailExpired?.prevExpired)
+        : null;
 
       let next_expired = new Date(
         detailExpired?.newExpired || eachdevice.expired

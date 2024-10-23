@@ -1,5 +1,5 @@
 // This function is the webhook's request handler.
-exports = async function (payload) {
+module.exports = async function (payload) {
   //Execute application logic, such as working with MongoDB
   try {
     const body = EJSON.parse(payload.body.text());

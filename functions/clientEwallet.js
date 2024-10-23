@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const eWalletObj = await eWalletFunction(payload);
 
@@ -134,14 +134,14 @@ const eWalletFunction = async (payload) => {
   };
 
   const GET_BALANCE = async () => {
-    /* 
+    /*
       {
         method: 'GET_BALANCE',
         data: {
           outlet_id: "621f21355922114973397330"
         },
         filter: {}
-      } 
+      }
     */
     await valid.hasPermission(["bo_ewallet"]);
 
@@ -215,7 +215,7 @@ const eWalletFunction = async (payload) => {
           // prev page => before_id di isi
           after_id: [string | xendit_id],
           before_id: [string | xendit_id],
-          limit: 10, // default 25 
+          limit: 10, // default 25
         }
       })
     */

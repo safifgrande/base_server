@@ -10,7 +10,7 @@
       }
     }
   */
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const handler = mainHandler(payload);
     return handler.sendEmail(await handler.getJWT());

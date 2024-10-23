@@ -1,5 +1,5 @@
 // This function is the webhook's request handler.
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const handler = mainHandler(payload);
     const payment_license = await handler.dbGetLicensePayment();
@@ -238,7 +238,8 @@ const mainHandler = (payload) => {
   };
 
   const updateDetailExpired = (devices, paymentLicense) => {
-    const expiryDay = paymentLicense.price_level?.expiryDay ?? paymentLicense.license_duration;
+    const expiryDay =
+      paymentLicense.price_level?.expiryDay ?? paymentLicense.license_duration;
 
     console.log(expiryDay, "expiryDay");
 
@@ -257,7 +258,8 @@ const mainHandler = (payload) => {
   };
 
   const extendLicenseDevicesData = (paymentLicense) => {
-    const expiryDay = paymentLicense.price_level?.expiryDay ?? paymentLicense.license_duration;
+    const expiryDay =
+      paymentLicense.price_level?.expiryDay ?? paymentLicense.license_duration;
     const devices = paymentLicense.devices;
 
     const ress = devices.map((eachdevice) => {
@@ -303,7 +305,8 @@ const mainHandler = (payload) => {
     let lastLicenseDevice = await intRegisterOrExtend.getLastLicense({
       license: BSON.ObjectId(paymentLicense.license.toString()),
     });
-    const expiryDay = paymentLicense.price_level?.expiryDay ?? paymentLicense.license_duration;
+    const expiryDay =
+      paymentLicense.price_level?.expiryDay ?? paymentLicense.license_duration;
     const foundClient = paymentLicense.user_id;
     const foundUser = paymentLicense.createdBy;
     const license = paymentLicense.license;
@@ -353,7 +356,7 @@ const mainHandler = (payload) => {
     if (ENV === "production") {
       path =
         description.includes("Admin Register") ||
-          description.includes("Admin Add license")
+        description.includes("Admin Add license")
           ? `${email_server}/subscribe`
           : `${email_server}/extend`;
     }

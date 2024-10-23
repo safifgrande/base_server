@@ -1,4 +1,4 @@
-exports = async (business_id) => {
+module.exports = async (business_id) => {
   try {
     const { license } = context.functions.execute("intUserContext");
 

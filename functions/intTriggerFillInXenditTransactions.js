@@ -1,4 +1,4 @@
-exports = async () => {
+module.exports = async () => {
   try {
     const handler = new Handler();
     // 1. find not settled ewallet gateway

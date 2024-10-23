@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const posIdObject = await posId(payload);
     if (posIdObject[payload.method]) {

@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const productMenuObject = await productMenu(payload);
     if (productMenuObject[payload.method]) {

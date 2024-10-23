@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const priceLevelObject = await priceLevel(payload);
 

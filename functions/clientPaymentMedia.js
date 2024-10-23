@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const paymentMediaObject = await paymentMedia(payload);
 
@@ -81,7 +81,7 @@ const paymentMedia = async (payload) => {
     return await dbPOSTUpdate();
   };
 
-  /* 
+  /*
     exports({
       method:'ACTIVE',
       filter:{
@@ -92,7 +92,7 @@ const paymentMedia = async (payload) => {
         active: true,
       }
     })
-    
+
     - validate request
     - update active true or false status
   */

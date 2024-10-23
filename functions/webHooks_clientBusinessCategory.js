@@ -1,4 +1,4 @@
-exports = async function (payload, response) {
+module.exports = async function (payload, response) {
   try {
     const business = await context.services
       .get("mongodb-atlas")

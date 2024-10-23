@@ -1,4 +1,4 @@
-exports = async function (payload) {
+module.exports = async function (payload) {
   try {
     const body = EJSON.parse(payload.body.text());
     if (!body.transaction_id) throw new Error("E20106BE");

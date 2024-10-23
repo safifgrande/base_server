@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const masterRequest = await masterFunction(payload);
     if (masterRequest[payload.method]) {
@@ -1131,8 +1131,8 @@ const masterFunction = async (payload) => {
     );
   };
 
-  /* 
-    memisahkan duplicate PIN karena duplicateUsernameAndPIN 
+  /*
+    memisahkan duplicate PIN karena duplicateUsernameAndPIN
     memvalidsi global data untuk username and phone
     sedangkan untuk pin harus ada outlet
   */

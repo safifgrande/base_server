@@ -1,4 +1,4 @@
-exports = async ({ id, license }) => {
+module.exports = async ({ id, license }) => {
   try {
     const mongodb = context.services.get(context.values.get("CLUSTER_NAME"));
     const db = mongodb.db(context.values.get("DB_NAME"));

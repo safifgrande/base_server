@@ -1,4 +1,4 @@
-exports = async (url, msg) => {
+module.exports = async (url, msg) => {
   let body = { text: msg };
 
   if (typeof msg === "object") {

@@ -1,6 +1,6 @@
 // new image url : https://spdev.b-cdn.net/63f6df662640e1dc030591f2/product/dimsum_1677558350.jpg
 
-exports = async ({ image_url }) => {
+module.exports = async ({ image_url }) => {
   try {
     const bunny_url = context.environment.values.BUNNY_URL;
     const bunny_url_purge = context.environment.values.BUNNY_URL_PURGE;

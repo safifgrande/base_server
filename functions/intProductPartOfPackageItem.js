@@ -1,4 +1,4 @@
-exports = async (product_ids) => {
+module.exports = async (product_ids) => {
   try {
     const mongodb = context.services.get(context.values.get("CLUSTER_NAME"));
     const db = mongodb.db(context.values.get("DB_NAME"));

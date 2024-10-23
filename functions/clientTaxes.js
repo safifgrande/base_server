@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const taxesObject = await taxes(payload);
     if (taxesObject[payload.method]) {

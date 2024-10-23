@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const packageObject = generalFunction(payload);
     const { method } = payload;

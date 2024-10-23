@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const productGroupObject = await productGroup(payload);
     if (productGroupObject[payload.method]) {
@@ -176,7 +176,7 @@ const productGroup = async (payload) => {
     2. update active to collection
   */
   const ACTIVE = async () => {
-    const { filter } = payload
+    const { filter } = payload;
 
     // 1. validate request
     await activeValidation();
@@ -198,7 +198,9 @@ const productGroup = async (payload) => {
     // 4. update product
     await dbUpdateProductStatus(exGrp);
 
-    await generateViewProducts({ outlet: BSON.ObjectId(filter.outlet.toString()) })
+    await generateViewProducts({
+      outlet: BSON.ObjectId(filter.outlet.toString()),
+    });
 
     return payload.filter._id.toString();
   };
@@ -663,7 +665,9 @@ const productGroup = async (payload) => {
         hidden: false,
       });
 
-    await generateViewProducts({ outlet: BSON.ObjectId(data.outlet_id.toString()) })
+    await generateViewProducts({
+      outlet: BSON.ObjectId(data.outlet_id.toString()),
+    });
     return insertGroup.insertedId.toString();
   };
 
@@ -687,7 +691,9 @@ const productGroup = async (payload) => {
       }
     );
 
-    await generateViewProducts({ outlet: BSON.ObjectId(data.outlet_id.toString()) })
+    await generateViewProducts({
+      outlet: BSON.ObjectId(data.outlet_id.toString()),
+    });
     return data.id.toString();
   };
 
@@ -705,9 +711,13 @@ const productGroup = async (payload) => {
   };
 
   const generateViewProducts = async (filter) => {
-    const { outlet } = filter
-    await context.functions.execute("intGenerateView", { outlet, col_view: "view_products", col_db: "products" })
-  }
+    const { outlet } = filter;
+    await context.functions.execute("intGenerateView", {
+      outlet,
+      col_view: "view_products",
+      col_db: "products",
+    });
+  };
   // ================ DB function end ======================
 
   return Object.freeze({

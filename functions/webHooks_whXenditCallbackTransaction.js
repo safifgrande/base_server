@@ -1,9 +1,8 @@
 // This function is the webhook's request handler.
-exports = async function (payload) {
+module.exports = async function (payload) {
   try {
     const body = EJSON.parse(payload.body.text());
     const func = generalFunction(body);
-
 
     const xenditTransDetail = await func.fetchXenditTransDetail();
 
@@ -53,22 +52,28 @@ const generalFunction = ({ data, business_id: xendit_id }) => {
         body_set.status = "cancel";
     }
 
-    const data_ewallet_gate = await db.collection(collectionNames.ewallet_gateway).findOne({
-      _id: BSON.ObjectId(ref_id),
-      license: BSON.ObjectId(license)
-    }, {
-      status: 1,
-      createdAt: 1
-    })
+    const data_ewallet_gate = await db
+      .collection(collectionNames.ewallet_gateway)
+      .findOne(
+        {
+          _id: BSON.ObjectId(ref_id),
+          license: BSON.ObjectId(license),
+        },
+        {
+          status: 1,
+          createdAt: 1,
+        }
+      );
 
     // paid , tidak usah di process
     if (data_ewallet_gate?.status !== "paid") {
       const currentDate = new Date();
       const now = currentDate.getTime() / 1000;
-      const second = now - new Date(data_ewallet_gate.createdAt).getTime() / 1000;
+      const second =
+        now - new Date(data_ewallet_gate.createdAt).getTime() / 1000;
 
       if (second >= 90 && data_ewallet_gate.status == "pending") {
-        body_set.status = "cancel"
+        body_set.status = "cancel";
       }
 
       await db.collection(collectionNames.ewallet_gateway).updateOne(
@@ -114,8 +119,8 @@ const generalFunction = ({ data, business_id: xendit_id }) => {
     if (!transDetail) {
       return {
         xendit_trans_id: data.id,
-        xendit_business_id: xendit_id
-      }
+        xendit_business_id: xendit_id,
+      };
     }
 
     return {

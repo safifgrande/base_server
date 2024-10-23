@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   /*
   exports({
     user_id:"611e15808837424e2499d6b6",

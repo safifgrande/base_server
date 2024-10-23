@@ -1,4 +1,4 @@
-exports = function (payload) {
+module.exports = function (payload) {
   try {
     const { filter } = payload;
     let val;

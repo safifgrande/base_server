@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const voidReasonsObject = await voidReason(payload);
 
@@ -228,7 +228,7 @@ const voidReason = async (payload) => {
         outlet: '602c8d681509d0b81c63ead8',
         active: true
       }
-    })      
+    })
   */
 
   const POST = async () => {
@@ -262,7 +262,7 @@ const voidReason = async (payload) => {
     );
   };
 
-  /* 
+  /*
       exports({
       method:'ACTIVE',
       filter:{},

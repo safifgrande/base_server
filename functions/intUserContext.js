@@ -1,4 +1,4 @@
-exports = () => {
+module.exports = () => {
   try {
     const user_data = context.user.data;
 

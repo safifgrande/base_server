@@ -1,11 +1,11 @@
 /*
- function METHOD 
+ function METHOD
  LIST : get data refund reasons
  POST : create or update by flag id
  ACTIVE: send like update but just active or deactive data
 */
 
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const refundReasonObject = await refundReason(payload);
 
@@ -233,7 +233,7 @@ const refundReason = async (payload) => {
         outlet: '602c8d681509d0b81c63ead8',
         active: true
       }
-    })      
+    })
   */
   const POST = async () => {
     await postValidation();
@@ -286,7 +286,7 @@ const refundReason = async (payload) => {
     delete filter.id;
   };
 
-  /* 
+  /*
       exports({
       method:'ACTIVE',
       filter:{},

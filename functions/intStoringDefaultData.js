@@ -7,7 +7,7 @@
   }
 ---------------------------*/
 
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     return await storeData(payload);
   } catch (error) {

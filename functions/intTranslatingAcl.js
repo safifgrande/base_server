@@ -1,6 +1,6 @@
 /* NO PAYLOAD JUST CALL THE FUNCTION TO RETURN ACL_KEYS */
 
-exports = () => {
+module.exports = () => {
   try {
     const list_acl = context.values.get("ACL");
 

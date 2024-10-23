@@ -12,7 +12,7 @@
       ]
     }
   })
-  
+
   {
     method: 'LIST',
     filter: {
@@ -21,7 +21,7 @@
   }
 */
 
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const destFunction = generalFunction(payload);
     const { method } = payload;

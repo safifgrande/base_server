@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const businessObject = await business(payload);
     const { method } = payload;

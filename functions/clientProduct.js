@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const productObject = await product(payload);
     if (!productObject[payload.method])
@@ -190,7 +190,7 @@ const product = async (payload) => {
 
     await createRecapStock(product_id);
 
-    await generateViewProducts(payload.data)
+    await generateViewProducts(payload.data);
 
     return product_id;
   };
@@ -353,7 +353,7 @@ const product = async (payload) => {
     if (!payload.defPL) {
       throw new Error(
         `license ${license}, ` +
-        `outlet: ${outlet} tidak memiliki default price levels`
+          `outlet: ${outlet} tidak memiliki default price levels`
       );
     }
 
@@ -366,7 +366,7 @@ const product = async (payload) => {
     if (indexOfdefPL === -1) {
       throw new Error(
         `license ${license}, ` +
-        `outlet: ${outlet}, tambah product tidak mengirim default price level`
+          `outlet: ${outlet}, tambah product tidak mengirim default price level`
       );
     }
 
@@ -748,7 +748,9 @@ const product = async (payload) => {
 
     await handleProdQtyInDept();
 
-    await generateViewProducts({ outlet: BSON.ObjectId(payload.filter.outlet_id.toString()) })
+    await generateViewProducts({
+      outlet: BSON.ObjectId(payload.filter.outlet_id.toString()),
+    });
 
     return payload.filter.id.toString();
   };
@@ -1190,7 +1192,7 @@ const product = async (payload) => {
     // response dari RF ini hanya untuk product, tidak response menu_variant
     filter.menu_variant = { $ne: true };
 
-    let filter_view_2 = {}
+    let filter_view_2 = {};
     // payload filter
     if (outlet_id) {
       filter.outlet = BSON.ObjectId(outlet_id.toString());
@@ -1209,8 +1211,8 @@ const product = async (payload) => {
         { sku: { $regex: search_text, $options: "i" } },
       ];
 
-      filter_view_2.name = { $regex: search_text, $options: "i" }
-      filter_view_2.sku = { $regex: search_text, $options: "i" }
+      filter_view_2.name = { $regex: search_text, $options: "i" };
+      filter_view_2.sku = { $regex: search_text, $options: "i" };
       delete filter.search_text;
     } else {
       delete filter.search_text;
@@ -1221,7 +1223,10 @@ const product = async (payload) => {
     }
 
     let filter2 = [{ $match: { $and: [] } }];
-    if ((filter.group === "" && filter.departments?.length === 0) || !filter.group && !filter.departments) {
+    if (
+      (filter.group === "" && filter.departments?.length === 0) ||
+      (!filter.group && !filter.departments)
+    ) {
       filter2 = [];
     }
 
@@ -1230,7 +1235,7 @@ const product = async (payload) => {
         "group._id": BSON.ObjectId(filter.group),
       });
 
-      filter_view_2.group_id = { "$in": [BSON.ObjectId(filter.group)] }
+      filter_view_2.group_id = { $in: [BSON.ObjectId(filter.group)] };
       delete filter.group;
     } else {
       delete filter.group;
@@ -1246,10 +1251,10 @@ const product = async (payload) => {
       });
 
       filter_view_2.department_id = {
-        "$in": filter.departments.reduce((prev, next) => {
+        $in: filter.departments.reduce((prev, next) => {
           return [...prev, BSON.ObjectId(next)];
-        }, [])
-      }
+        }, []),
+      };
       delete filter.departments;
     } else {
       delete filter.departments;
@@ -1449,10 +1454,16 @@ const product = async (payload) => {
     delete filter.sort_by;
     delete filter.sort_type;
 
-    const products_view = await getViewProducts(filter, filter_view_2, sort, page, limit)
+    const products_view = await getViewProducts(
+      filter,
+      filter_view_2,
+      sort,
+      page,
+      limit
+    );
 
     if (products_view.totalData > 0) {
-      return products_view
+      return products_view;
     }
 
     const products = await db
@@ -1506,7 +1517,7 @@ const product = async (payload) => {
       ])
       .toArray();
 
-    await generateViewProducts(filter)
+    await generateViewProducts(filter);
     return {
       products: products,
       totalData: getTotalData[0]?.count || 0,
@@ -1525,7 +1536,6 @@ const product = async (payload) => {
       outlet_id: BSON.ObjectId(outlet_id.toString()),
     };
 
-
     if (params.search_text) {
       filter["$or"] = [
         { name: { $regex: params.search_text, $options: "i" } },
@@ -1533,21 +1543,16 @@ const product = async (payload) => {
       ];
     }
 
-
     if (params.group) {
-      filter["group_id"] = BSON.ObjectId(
-        params.group.toString()
-      );
+      filter["group_id"] = BSON.ObjectId(params.group.toString());
     }
 
     if (params.department) {
-      filter["department_id"] = BSON.ObjectId(
-        params.department.toString()
-      );
+      filter["department_id"] = BSON.ObjectId(params.department.toString());
     }
 
     if (!show_variant) {
-      filter["menu_variant"] = false
+      filter["menu_variant"] = false;
       // if (filter["$or"]) {
       //   filter["$and"] = [
       //     {
@@ -1593,44 +1598,45 @@ const product = async (payload) => {
       ];
     }
 
-    const get_view_products = await db_views.collection("view_products").aggregate([
-      {
-        $facet: {
-          data: [
-            { $match: filter },
-            {
-              $project: {
-                id: { $toString: "$_id" },
-                _id: 0,
-                sku: 1,
-                name: 1,
-                menu_variant: 1,
-                // untuk sorting -> aggregate gak suport collation untuk sorting case-insensitive
-                lowerName: { $toLower: "$name" },
+    const get_view_products = await db_views
+      .collection("view_products")
+      .aggregate([
+        {
+          $facet: {
+            data: [
+              { $match: filter },
+              {
+                $project: {
+                  id: { $toString: "$_id" },
+                  _id: 0,
+                  sku: 1,
+                  name: 1,
+                  menu_variant: 1,
+                  // untuk sorting -> aggregate gak suport collation untuk sorting case-insensitive
+                  lowerName: { $toLower: "$name" },
+                },
               },
-            },
-            {
-              $sort: {
-                lowerName: 1,
+              {
+                $sort: {
+                  lowerName: 1,
+                },
               },
-            },
-            // remove lowerName, karena hanya digunakan untuk sorting
-            {
-              $unset: "lowerName",
-            },
-            { $skip: page > 0 ? (page - 1) * limit : 0 },
-            { $limit: limit }
-          ],
-          totalData: [
-            { $match: filter },
-            { $count: "count" },
-          ]
-        }
-      }
-    ]).toArray();
+              // remove lowerName, karena hanya digunakan untuk sorting
+              {
+                $unset: "lowerName",
+              },
+              { $skip: page > 0 ? (page - 1) * limit : 0 },
+              { $limit: limit },
+            ],
+            totalData: [{ $match: filter }, { $count: "count" }],
+          },
+        },
+      ])
+      .toArray();
 
-    get_view_products[0].totalData = get_view_products[0].totalData[0]?.count || 0;
-    return get_view_products
+    get_view_products[0].totalData =
+      get_view_products[0].totalData[0]?.count || 0;
+    return get_view_products;
     // const products = await db
     //   .collection(collectionNames.products)
     //   .aggregate([
@@ -1694,58 +1700,67 @@ const product = async (payload) => {
   // ==================================
 
   const getViewProducts = async (filter, filter_view_2, sort, page, limit) => {
-    const { outlet, active, menu_variant } = filter
+    const { outlet, active, menu_variant } = filter;
 
     const filter_match = {
       active,
       menu_variant,
       outlet_id: outlet,
-      ...filter_view_2
-    }
+      ...filter_view_2,
+    };
 
-    const v_products = await db_views.collection("view_products").aggregate([
-      {
-        $match: filter_match
-      },
-      {
-        $project: {
-          id: { $toString: "$_id" },
-          _id: 0,
-          outlet_id: { $toString: "$outlet_id" },
-          outlet_name: 1,
-          department_id: { $toString: "$department_id" },
-          department_name: 1,
-          group_id: { $toString: "$group_id" },
-          group_name: 1,
-          price: 1,
-          sku: 1,
-          name: 1,
-          active: 1,
-          lowerName: {
-            $toLower: "$name",
+    const v_products = await db_views
+      .collection("view_products")
+      .aggregate([
+        {
+          $match: filter_match,
+        },
+        {
+          $project: {
+            id: { $toString: "$_id" },
+            _id: 0,
+            outlet_id: { $toString: "$outlet_id" },
+            outlet_name: 1,
+            department_id: { $toString: "$department_id" },
+            department_name: 1,
+            group_id: { $toString: "$group_id" },
+            group_name: 1,
+            price: 1,
+            sku: 1,
+            name: 1,
+            active: 1,
+            lowerName: {
+              $toLower: "$name",
+            },
           },
         },
-      },
-      sort,
-      {
-        $unset: "lowerName",
-      },
-      { $skip: page > 0 ? (page - 1) * limit : 0 },
-      { $limit: limit }
-    ]).toArray()
+        sort,
+        {
+          $unset: "lowerName",
+        },
+        { $skip: page > 0 ? (page - 1) * limit : 0 },
+        { $limit: limit },
+      ])
+      .toArray();
 
-    const count_products = await db_views.collection("view_products").count(filter_match)
+    const count_products = await db_views
+      .collection("view_products")
+      .count(filter_match);
 
     return {
       products: v_products,
-      totalData: count_products
-    }
-  }
+      totalData: count_products,
+    };
+  };
 
   const generateViewProducts = async (filter) => {
-    const { outlet } = filter
-    await context.functions.execute("intGenerateView", { outlet, col_view: "view_products", col_db: "products" })
-  }
+    const { outlet } = filter;
+    await context.functions.execute("intGenerateView", {
+      outlet,
+      col_view: "view_products",
+      col_db: "products",
+    });
+  };
 
   return Object.freeze({ LIST, POST, ACTIVE, GET, SEARCH, LITE_LIST });
 };

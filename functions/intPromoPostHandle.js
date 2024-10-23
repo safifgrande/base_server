@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const dataHandle = promoPostHandle(payload);
 
@@ -678,7 +678,6 @@ const promoPostHandle = (payload) => {
     const matchBy =
       data.term_product_type === "product" ? "$_id" : "$product_department";
 
-
     // validasi reward price level di product
 
     let validateForProduct = await db
@@ -689,7 +688,7 @@ const promoPostHandle = (payload) => {
             $expr: {
               $in: [matchBy, termsProduct],
             },
-            active: true
+            active: true,
           },
         },
         { $project: { prices: 1, name: 1 } },
@@ -717,8 +716,8 @@ const promoPostHandle = (payload) => {
               },
               {
                 $project: {
-                  _id: 1
-                }
+                  _id: 1,
+                },
               },
             ],
             as: "productPricesLevel",
@@ -727,12 +726,12 @@ const promoPostHandle = (payload) => {
         {
           $project: {
             productPricesLevel: 1,
-          }
+          },
         },
       ])
       .toArray();
 
-    let productNotValid
+    let productNotValid;
     if (data.term_product_type !== "department") {
       productNotValid = validateForProduct.filter(
         (e) => e.productPricesLevel.length <= 0
@@ -740,7 +739,7 @@ const promoPostHandle = (payload) => {
     } else {
       validateForProduct = validateForProduct.filter(
         (e) => e.productPricesLevel.length > 0
-      )
+      );
     }
 
     if (productNotValid) throw new Error("E30003BE");

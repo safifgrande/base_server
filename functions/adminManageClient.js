@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const generalFunction = await adminManageClient(payload);
 
@@ -173,7 +173,9 @@ const adminManageClient = async (payload) => {
     });
 
     // reset qty produk stock
-    await dbResetData(collectionNames.product_stock, { quantity: parseFloat(0) });
+    await dbResetData(collectionNames.product_stock, {
+      quantity: parseFloat(0),
+    });
   };
 
   const dbUpdatePasswordUser = async () => {

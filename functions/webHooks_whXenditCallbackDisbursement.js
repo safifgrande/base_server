@@ -1,4 +1,4 @@
-exports = async function (payload) {
+module.exports = async function (payload) {
   try {
     const body = EJSON.parse(payload.body.text());
 
@@ -7,7 +7,6 @@ exports = async function (payload) {
 
     // update status
     await func.updateStatus();
-
   } catch (e) {
     context.functions.execute(
       "handleCatchError",
@@ -51,7 +50,11 @@ const generalFunction = (data) => {
     );
   }
 
-  async function _dbUpdateEwallet(get_data_ewallet, body_set, xendit_trans_detail) {
+  async function _dbUpdateEwallet(
+    get_data_ewallet,
+    body_set,
+    xendit_trans_detail
+  ) {
     return db.collection(collectionNames.ewallet_gateway).updateOne(
       {
         _id: get_data_ewallet._id,
@@ -65,17 +68,16 @@ const generalFunction = (data) => {
   }
 
   async function _dbFindEwalletGateway() {
-    return db.collection(collectionNames.ewallet_gateway)
-      .findOne(
-        {
-          _id: BSON.ObjectId(data.external_id),
-        },
-        {
-          _id: 1,
-          disbursement_id: 1,
-          license: 1,
-        }
-      );
+    return db.collection(collectionNames.ewallet_gateway).findOne(
+      {
+        _id: BSON.ObjectId(data.external_id),
+      },
+      {
+        _id: 1,
+        disbursement_id: 1,
+        license: 1,
+      }
+    );
   }
 
   // Helper =============
@@ -88,7 +90,7 @@ const generalFunction = (data) => {
       case "COMPLETED":
         return {
           status: "paid",
-          xendit_status: data.status
+          xendit_status: data.status,
         };
       case "FAILED":
         return {
@@ -105,7 +107,8 @@ const generalFunction = (data) => {
   async function _fetchXenditTransDetail() {
     const { user_id: xendit_id, external_id: ref_id } = data;
     const key = context.environment.values.XENDIT_PRIVATE_KEY;
-    const url = context.environment.values.XENDIT_API_URL +
+    const url =
+      context.environment.values.XENDIT_API_URL +
       `transactions?reference_id=${ref_id}&types=DISBURSEMENT`;
 
     const respTransDetail = await context.http.get({
@@ -124,7 +127,9 @@ const generalFunction = (data) => {
       throw new Error(respTransBody.message);
     }
 
-    const { data: [transDetail] } = respTransBody;
+    const {
+      data: [transDetail],
+    } = respTransBody;
 
     return {
       xendit_trans_id: transDetail.id,
@@ -137,7 +142,7 @@ const generalFunction = (data) => {
       xendit_xendit_fee: transDetail.fee.xendit_fee,
       xendit_value_added_tax: transDetail.fee.value_added_tax,
     };
-  };
+  }
 
   return Object.freeze({
     updateStatus,

@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const invoiceObject = await invoice(payload);
 
@@ -112,7 +112,7 @@ const invoice = async (payload) => {
         "payment.invoice_ammount_due": { $gt: 0 },
       };
 
-      filter.invoice_status = { "$ne": "refund" };
+      filter.invoice_status = { $ne: "refund" };
     }
     delete filter.payable;
   };
@@ -635,8 +635,8 @@ const invoice = async (payload) => {
       const findLastDoc =
         last_invoice_numbers.length > 0
           ? last_invoice_numbers.find(
-            (v) => v.outlet.toString() === inv.outlet.toString()
-          )
+              (v) => v.outlet.toString() === inv.outlet.toString()
+            )
           : false;
 
       // if last document is false create counter from 1

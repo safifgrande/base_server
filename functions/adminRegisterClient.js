@@ -102,7 +102,7 @@
     })
   */
 
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     await generalFunction(payload);
     return true;
@@ -210,13 +210,15 @@ const generalFunction = async (payload) => {
 
     let detailDevicesExpired = [];
     deviceIds.insertedIds.map((id) => {
-      const user_device = data.user_license_device.find(e => e._id.toString() === id.toString())
+      const user_device = data.user_license_device.find(
+        (e) => e._id.toString() === id.toString()
+      );
 
       const obj = {
         devices: id,
         // prevExpired: new Date(),
-        newExpired: user_device.expired,  // mas yuda minta ini di samakan dengan user_license_device dan jam nya ikut utc +0
-      }
+        newExpired: user_device.expired, // mas yuda minta ini di samakan dengan user_license_device dan jam nya ikut utc +0
+      };
 
       detailDevicesExpired.push(obj);
     });
@@ -261,13 +263,15 @@ const generalFunction = async (payload) => {
     let detailDevicesExpired = [];
     const today = new Date();
     deviceIds.insertedIds.map((id) => {
-      const user_device = data.user_license_device.find(e => e._id.toString() === id.toString())
+      const user_device = data.user_license_device.find(
+        (e) => e._id.toString() === id.toString()
+      );
 
       const obj = {
         devices: id,
         // prevExpired: new Date(),
-        newExpired: user_device.expired,  // mas yuda minta ini di samakan dengan user_license_device dan jam nya ikut utc +0
-      }
+        newExpired: user_device.expired, // mas yuda minta ini di samakan dengan user_license_device dan jam nya ikut utc +0
+      };
 
       detailDevicesExpired.push(obj);
     });
@@ -565,18 +569,23 @@ const generalFunction = async (payload) => {
       master_license_discount,
       duration,
       tax,
-      total
+      total,
     } = body;
 
     let data_payload = {
       license_id: newUserLicense._id.toString(),
       total_device: parseInt(device_qty),
-    }
+    };
 
-    if (master_license_price_level && master_license_discount && master_license_id) {
-      data_payload.business_plan_id = master_license_id.toString(),
-        data_payload.master_license_price_level = master_license_price_level.toString()
-      data_payload.master_license_discount = master_license_discount.toString()
+    if (
+      master_license_price_level &&
+      master_license_discount &&
+      master_license_id
+    ) {
+      (data_payload.business_plan_id = master_license_id.toString()),
+        (data_payload.master_license_price_level =
+          master_license_price_level.toString());
+      data_payload.master_license_discount = master_license_discount.toString();
     }
 
     if (duration >= 1 && total > -1) {
@@ -584,8 +593,8 @@ const generalFunction = async (payload) => {
         ...data_payload,
         duration,
         tax,
-        total
-      }
+        total,
+      };
     }
 
     return await context.functions
@@ -606,7 +615,9 @@ const generalFunction = async (payload) => {
     const invoiceNumber = await intRegisterOrExtend.generateInvoice();
     // create new user license payment
     const newUserLicensePayment = constructNewLicensePayment(invoiceNumber);
-    const expiredDate = valid.generateExpiredDate(licensePriceLevel?.expiryDay ?? license_data.duration);
+    const expiredDate = valid.generateExpiredDate(
+      licensePriceLevel?.expiryDay ?? license_data.duration
+    );
 
     const license_device_data = await constructLicenseDevice(
       expiredDate,
@@ -623,17 +634,22 @@ const generalFunction = async (payload) => {
   function constructNewLicensePayment(invoiceNumber) {
     const { device_qty, master_license_price_level } = body;
     const { user_license_payment: ulp } = collectionEnums;
-    const totalPayment = licensePriceLevel ? parseFloat(licensePriceLevel.price * device_qty) : license_data.total;
-    const subTotal = totalPayment == 0 ? parseFloat(0) :
-      totalPayment / (parseFloat(licensePriceLevel?.tax ?? license_data.tax) / 100 + 1);
+    const totalPayment = licensePriceLevel
+      ? parseFloat(licensePriceLevel.price * device_qty)
+      : license_data.total;
+    const subTotal =
+      totalPayment == 0
+        ? parseFloat(0)
+        : totalPayment /
+          (parseFloat(licensePriceLevel?.tax ?? license_data.tax) / 100 + 1);
 
     return {
       _id: new BSON.ObjectId(),
       _partition: "", // harus di isi setelah memasukkan outlet
       __v: parseInt(0),
-      master_license_price_level: master_license_price_level ? BSON.ObjectId(
-        master_license_price_level.toString()
-      ) : null,
+      master_license_price_level: master_license_price_level
+        ? BSON.ObjectId(master_license_price_level.toString())
+        : null,
       masterLicenseId: license_data?._id ?? null,
       license: newUserLicense._id,
       license_name: license_data.name,
@@ -645,13 +661,24 @@ const generalFunction = async (payload) => {
       note: "",
       invoiceNumber: invoiceNumber,
       dueDate: new Date(),
-      discount: licensePriceLevel?.discNominal ? parseFloat(licensePriceLevel.discNominal) : parseFloat(0),
-      tax: subTotal == 0 ? parseFloat(subTotal) : licensePriceLevel?.tax ? parseFloat(licensePriceLevel.tax) : parseFloat(license_data.tax),
-      price: licensePriceLevel?.price ? parseFloat(licensePriceLevel.price) : parseFloat(license_data.total),
+      discount: licensePriceLevel?.discNominal
+        ? parseFloat(licensePriceLevel.discNominal)
+        : parseFloat(0),
+      tax:
+        subTotal == 0
+          ? parseFloat(subTotal)
+          : licensePriceLevel?.tax
+          ? parseFloat(licensePriceLevel.tax)
+          : parseFloat(license_data.tax),
+      price: licensePriceLevel?.price
+        ? parseFloat(licensePriceLevel.price)
+        : parseFloat(license_data.total),
       sub_total: parseFloat(subTotal),
-      grandTotal: licensePriceLevel?.price ? parseFloat(
-        licensePriceLevel.price * device_qty - licensePriceLevel.discNominal
-      ) : parseFloat(totalPayment),
+      grandTotal: licensePriceLevel?.price
+        ? parseFloat(
+            licensePriceLevel.price * device_qty - licensePriceLevel.discNominal
+          )
+        : parseFloat(totalPayment),
       operator: ulp.operator.public,
       type: license_data?._id ? ulp.type.subscribed : ulp.type.custom,
       totalDevicesPaid: parseInt(device_qty),
@@ -667,8 +694,8 @@ const generalFunction = async (payload) => {
     let lastLicenseDevice = body?.email
       ? 0
       : await intRegisterOrExtend.getLastLicense({
-        license: BSON.ObjectId(user_data.license.toString()),
-      });
+          license: BSON.ObjectId(user_data.license.toString()),
+        });
 
     const { device_qty } = body;
 
@@ -993,7 +1020,7 @@ const generalFunction = async (payload) => {
                 name: 1,
               },
             },
-            detailDevicesExpired: 1
+            detailDevicesExpired: 1,
           },
         },
       ])
@@ -1143,7 +1170,7 @@ const generalFunction = async (payload) => {
       master_license_discount,
       total,
       duration,
-      tax
+      tax,
     } = body;
 
     if (total > -1 && duration >= 1) {
@@ -1152,9 +1179,9 @@ const generalFunction = async (payload) => {
           name: "custom",
           duration,
           total,
-          tax
-        }
-      }
+          tax,
+        },
+      };
     }
 
     const [license_data] = await db

@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const disbInstance = new DisbursmentFunction(payload);
     disbInstance.authorization();

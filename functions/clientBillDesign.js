@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const billObject = await billDesign(payload);
     if (!billObject[payload.method])

@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const TypeSalesObject = await typeSales(payload);
     if (TypeSalesObject[payload.method]) {
@@ -66,7 +66,7 @@ const typeSales = async (payload) => {
         default: boolean
       }
     })
-    
+
     1. validation payload
     2. save or update data
   */
@@ -82,7 +82,7 @@ const typeSales = async (payload) => {
     }
   };
 
-  /* 
+  /*
     exports({
       method:'ACTIVE',
       filter:{
@@ -92,7 +92,7 @@ const typeSales = async (payload) => {
         active: true
       }
     })
-    
+
     1. validation
     2. save data
   */

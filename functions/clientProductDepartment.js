@@ -1,4 +1,4 @@
-exports = async (payload) => {
+module.exports = async (payload) => {
   try {
     const { method } = payload;
 
@@ -126,7 +126,9 @@ const generalFunction = (payload) => {
 
       // 3.3. handle department update
       await dbUpdateDept(groupId);
-      await generateViewProducts({ outlet: BSON.ObjectId(data.outlet_id.toString()) })
+      await generateViewProducts({
+        outlet: BSON.ObjectId(data.outlet_id.toString()),
+      });
       return data.id;
     } else {
       // insert new
@@ -759,7 +761,7 @@ const generalFunction = (payload) => {
       }
     );
 
-    await generateViewProducts({ outlet: BSON.ObjectId(outlet.toString()) })
+    await generateViewProducts({ outlet: BSON.ObjectId(outlet.toString()) });
 
     return id;
   };
@@ -906,9 +908,13 @@ const generalFunction = (payload) => {
   };
 
   const generateViewProducts = async (filter) => {
-    const { outlet } = filter
-    await context.functions.execute("intGenerateView", { outlet, col_view: "view_products", col_db: "products" })
-  }
+    const { outlet } = filter;
+    await context.functions.execute("intGenerateView", {
+      outlet,
+      col_view: "view_products",
+      col_db: "products",
+    });
+  };
 
   return Object.freeze({ GET, POST, ACTIVE, LIST, LITE });
 };
