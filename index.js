@@ -1,24 +1,20 @@
+require("./engine/config")();
 const express = require("express");
-const context = require("./engine/v1/context");
 const authMiddleware = require("./engine/middleware/authMiddleware");
-const mongoInstance = require("./engine/global/mongo");
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 
-mongoInstance.connect();
-
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
 app.get("/data", authMiddleware, async (req, res) => {
-  console.log(context.user.data);
   res.send(
-    await context.http().get("https://jsonplaceholder.typicode.com/todos/")
-  );
+    await context.http.get("https://jsonplaceholder.typicode.com/todos/")
+  );;
 });
 
 app.get("/get_user", authMiddleware, async (req, res) => {
@@ -28,7 +24,8 @@ app.get("/get_user", authMiddleware, async (req, res) => {
 app.post("/login", async (req, res) => {
   const body = req.body;
   if (body) {
-    const valid = await context.functions.execute("intValidation");
+    const valid = context.functions.execute("intValidation");
+
     const mongodb = context.services.get("test");
     const access = mongodb.db(context.values.get("DB_NAME"));
     const db = access.collection("user");
@@ -88,7 +85,7 @@ app.post("/login", async (req, res) => {
     res.status(200).json({
       message: "success",
       data: {
-        realm_jwt: await context.functions.execute("intGenerateCustomJwt", {
+        realm_jwt: context.functions.execute("intGenerateCustomJwt", {
           userData: currentUser[0],
         }),
       },

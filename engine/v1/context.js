@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
-const mongoInstance = require("../global/mongo");
 
 class context {
   constructor() {
@@ -68,7 +67,7 @@ class context {
     return mongoInstance.getConnection();
   }
 
-  async #execute(functionName, ...args) {
+  #execute(functionName, ...args) {
     const functionPath = path.join(
       process.cwd(),
       "functions",
@@ -82,7 +81,7 @@ class context {
     }
 
     try {
-      const funcModule = await import(`file://${functionPath}`);
+      const funcModule = require(functionPath) //await import(`file://${functionPath}`);
       const func = funcModule.default || funcModule;
 
       if (typeof func !== "function") {
@@ -91,8 +90,14 @@ class context {
         );
       }
 
-      const result = await func(...args);
-      return result;
+      const result = func(...args);
+
+      if (result instanceof Promise) {
+        return result.then(resolvedResult => resolvedResult);
+      } else {
+        return result;
+      }
+
     } catch (error) {
       console.error(`Error executing function "${functionName}":`, error);
       throw error;

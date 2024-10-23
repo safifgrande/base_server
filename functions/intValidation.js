@@ -1,5 +1,4 @@
 const crypto = require("crypto");
-const context = require("../engine/v1/context");
 
 module.exports = function () {
   const hashPassword = (password) => {

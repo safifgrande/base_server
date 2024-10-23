@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const context = require("../engine/v1/context");
 
 module.exports = (payload) => {
   try {
