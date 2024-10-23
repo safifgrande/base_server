@@ -64,11 +64,8 @@ class context {
     }
   }
 
-  async #services(dbName, collection) {
-    const client = (await mongoInstance.connect())
-      .db(dbName)
-      .collection(collection);
-    return client;
+  #services() {
+    return mongoInstance.getConnection();
   }
 
   async #execute(functionName, ...args) {
@@ -103,4 +100,13 @@ class context {
   }
 }
 
-module.exports = new context();
+/**
+ * @type {{
+ *   services: {
+ *     get: () => import('mongodb').MongoClient
+ *   }
+ * }}
+ */
+const contextInstance = new context();
+
+module.exports = contextInstance;

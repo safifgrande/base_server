@@ -12,7 +12,7 @@ class MongoConnection {
 
   async connect() {
     if (this.client && this.isConnected()) {
-      console.log("Reusing existing MongoDB connection");
+      console.log("Use Existing Connection");
       return this.client;
     }
 
@@ -25,13 +25,6 @@ class MongoConnection {
       console.error("Error connecting to MongoDB:", error);
       throw error;
     }
-  }
-
-  db(dbName) {
-    if (!this.client) {
-      throw new Error("No MongoDB client available. Please connect first.");
-    }
-    return this.client.db(dbName);
   }
 
   async close() {
@@ -52,6 +45,16 @@ class MongoConnection {
     } catch (error) {
       console.error("Error checking MongoDB connection:", error);
       return false;
+    }
+  }
+
+  getConnection() {
+    if (this.client && this.isConnected()) {
+      console.log("Using Existing Connection");
+      return this.client;
+    } else {
+      // TODO tanpa await gak bisa return
+      this.connect();
     }
   }
 }

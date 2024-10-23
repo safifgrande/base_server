@@ -1,11 +1,14 @@
 const express = require("express");
 const context = require("./engine/v1/context");
 const authMiddleware = require("./engine/middleware/authMiddleware");
+const mongoInstance = require("./engine/global/mongo");
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+
+mongoInstance.connect();
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -26,7 +29,9 @@ app.post("/login", async (req, res) => {
   const body = req.body;
   if (body) {
     const valid = await context.functions.execute("intValidation");
-    const db = await context.services.get("CORE_DB", "user");
+    const mongodb = context.services.get("test");
+    const access = mongodb.db(context.values.get("DB_NAME"));
+    const db = access.collection("user");
 
     const currentUser = await db
       .aggregate([
