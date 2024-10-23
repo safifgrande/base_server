@@ -1,0 +1,29 @@
+{
+    "values": {
+        "AUDIT_TIME_LIMIT": {
+            "$numberDouble": "0"
+        },
+        "BO_BASE_URL": "https://bo-test.grandepos.io",
+        "BUNNY_ACCESS_KEY": "3b588e13-6a49-4756-bbc72c9f1e33-d858-4544",
+        "BUNNY_API_KEY": "417cb8e8-77ef-4022-ba4a-3c43a2438c89f08b130c-d5d3-41c7-93f1-a4cdf9a3ca6b",
+        "BUNNY_URL": "https://uk.storage.bunnycdn.com/",
+        "BUNNY_URL_PURGE": "https://api.bunny.net/purge?url=",
+        "BUNNY_USER": "grande-test",
+        "CLIENT_ENV_BUNNY_DELETE": "{\"REACT_APP_CDN_KEY\":\"3b588e13-6a49-4756-bbc72c9f1e33-d858-4544\",\"REACT_APP_CDN_NAME\":\"grande-test\",\"REACT_APP_CDN_PULL_ZONE\":\"https://grandetest.b-cdn.net\",\"REACT_APP_API_KEY\":\"417cb8e8-77ef-4022-ba4a-3c43a2438c89f08b130c-d5d3-41c7-93f1-a4cdf9a3ca6b\"}",
+        "CLIENT_ENV_BUNNY": "{\"REACT_APP_CDN_KEY\":\"3b588e13-6a49-4756-bbc72c9f1e33-d858-4544\",\"REACT_APP_CDN_NAME\":\"grande-test\",\"REACT_APP_CDN_PULL_ZONE\":\"https://grandetest.b-cdn.net\"}",
+        "EWALLET_EMAIL_VERIFIER": "https://bo-test.grandepos.io/ewallet-email-verify",
+        "LOCAL_REDIRECT": "http://localhost:4000",
+        "REPORT_REALM_APP_ID": "report-lqrqe",
+        "SETUP_EMAIL_SERVER": "https://email.grandepos.io",
+        "SETUP_EMAIL_VERIFIER": "https://bo-test.grandepos.io/email-verification",
+        "SETUP_REALM_APP_ID": "bo-zkeyj",
+        "SETUP_URL_FORM_FORGOT": "https://bo-test.grandepos.io/reset-password",
+        "XENDIT_API_URL": "https://api.xendit.co/",
+        "XENDIT_API_URL_V2": "https://api.xendit.co/v2/",
+        "XENDIT_BRIDGE": "https://ap-southeast-1.aws.data.mongodb-api.com/app/xendit-bridge-lwmjx/endpoint/xendit_link_account",
+        "XENDIT_INVOICE_URL": "https://api.xendit.co/v2/invoices",
+        "XENDIT_PRIVATE_KEY": "xnd_development_RW1LDuibG5WISqNwvbr3CwSxC2yXGh6K0ehSZuthzV9zCgZzS2tawaaDuG0es:",
+        "XENDIT_REDIRECT_FAILURE": "/setting/billing-history?status=failure",
+        "XENDIT_REDIRECT_SUCCESS": "/setting/billing-history?status=success"
+    }
+}

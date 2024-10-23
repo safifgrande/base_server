@@ -6,12 +6,13 @@ module.exports = async (payload) => {
     }
     throw new Error("Method not found in request");
   } catch (e) {
-    return context.functions.execute(
-      "handleCatchError",
-      e,
-      payload,
-      "clientUser"
-    );
+    console.log(e, "<<");
+    // return context.functions.execute(
+    //   "handleCatchError",
+    //   e,
+    //   payload,
+    //   "clientUser"
+    // );
   }
 };
 

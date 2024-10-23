@@ -44,12 +44,11 @@ module.exports = async (e, payload, source = "", user) => {
     payload = JSON.stringify(payload || "");
 
     const newLog = {
-      _id: BSON.ObjectId(),
+      _id: new BSON.ObjectId(),
       thread_key: "realm-bo",
       isCatchError: true,
       error_message: e.message ? e.message : e,
       env: context.environment.tag || "",
-      appId: context.app.clientAppId || "",
       version: context.values.get("VERSION")?.version || "-",
       outlet: await getOutletAndBusiness(),
       userAndId: userAndId,

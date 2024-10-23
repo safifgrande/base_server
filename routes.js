@@ -1,4 +1,5 @@
 const login = require("./api/v1/login");
+const clientUser = require("./functions/clientUser");
 
 const public_route = [
   {
@@ -25,6 +26,16 @@ const protected_route = [
     method: "get",
     handler: async (req, res) => {
       res.send({ data: context.user.data });
+    },
+  },
+  {
+    path: "/clientUser",
+    middleware: authMiddleware,
+    method: "post",
+    handler: async (req, res) => {
+      res.json({
+        result: await clientUser(req.body),
+      });
     },
   },
 ];

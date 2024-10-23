@@ -18,4 +18,5 @@ module.exports = () => {
   mongoInstance.connect();
 
   global.authMiddleware = require("./middleware/authMiddleware");
+  global.BSON = require("bson");
 };

@@ -20,6 +20,9 @@ class context {
     this.user = {
       data: this.#user.bind(this),
     };
+    this.environment = {
+      ...this.#loadEnvironmentValues(),
+    };
   }
 
   #user() {
@@ -81,7 +84,7 @@ class context {
     }
 
     try {
-      const funcModule = require(functionPath) //await import(`file://${functionPath}`);
+      const funcModule = require(functionPath); //await import(`file://${functionPath}`);
       const func = funcModule.default || funcModule;
 
       if (typeof func !== "function") {
@@ -93,15 +96,22 @@ class context {
       const result = func(...args);
 
       if (result instanceof Promise) {
-        return result.then(resolvedResult => resolvedResult);
+        return result.then((resolvedResult) => resolvedResult);
       } else {
         return result;
       }
-
     } catch (error) {
       console.error(`Error executing function "${functionName}":`, error);
       throw error;
     }
+  }
+
+  #loadEnvironmentValues() {
+    // TODO process env
+    const tag = "development";
+    const filePath = path.join(process.cwd(), "environments", `${tag}.json`);
+    const envFile = require(filePath);
+    return { tag, values: envFile?.values };
   }
 }
 
