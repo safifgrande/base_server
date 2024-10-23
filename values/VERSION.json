@@ -1,0 +1,8 @@
+{
+  "name": "VERSION",
+  "value": {
+    "notes": ["fix stock audit", "revisi error message adjust out"],
+    "version": "1.7.1"
+  },
+  "from_secret": false
+}

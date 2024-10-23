@@ -1,0 +1,906 @@
+{
+    "name": "CODE_BANKS",
+    "value": [
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BCA",
+            "name": "Bank Central Asia (BCA)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "ANGLOMAS",
+            "name": "Anglomas International Bank"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MANDIRI",
+            "name": "Bank Mandiri"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "CIMB",
+            "name": "Bank CIMB Niaga"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "DANAMON",
+            "name": "Bank Danamon"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "PANIN",
+            "name": "Bank Panin"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "ANZ",
+            "name": "Bank ANZ Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "ARTOS",
+            "name": "Bank Artos Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BUMI_ARTA",
+            "name": "Bank Bumi Arta"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "CIMB_UUS",
+            "name": "Bank CIMB Niaga UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "COMMONWEALTH",
+            "name": "Bank Commonwealth"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "INDEX_SELINDO",
+            "name": "Bank Index Selindo"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "KESEJAHTERAAN_EKONOMI",
+            "name": "Bank Kesejahteraan Ekonomi"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MAYBANK_SYR",
+            "name": "Bank Maybank Syariah Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "OCBC_UUS",
+            "name": "Bank OCBC NISP UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "RABOBANK",
+            "name": "Bank Rabobank International Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "ROYAL",
+            "name": "Bank Royal Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "AGRIS",
+            "name": "Bank Agris"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SINARMAS",
+            "name": "Bank Sinarmas"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "ARTHA",
+            "name": "Bank Artha Graha International"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BJB",
+            "name": "Bank BJB"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BJB_SYR",
+            "name": "Bank BJB Syariah"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BNI_SYR",
+            "name": "Bank BNI Syariah"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BNP_PARIBAS",
+            "name": "Bank BNP Paribas"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BCA_SYR",
+            "name": "Bank Central Asia (BCA) Syariah"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "CHINATRUST",
+            "name": "Bank Chinatrust Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "DANAMON_UUS",
+            "name": "Bank Danamon UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "DINAR_INDONESIA",
+            "name": "Bank Dinar Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "FAMA",
+            "name": "Bank Fama International"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "HARDA_INTERNASIONAL",
+            "name": "Bank Harda Internasional"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "INA_PERDANA",
+            "name": "Bank Ina Perdania"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MUAMALAT",
+            "name": "Bank Muamalat Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MULTI_ARTA_SENTOSA",
+            "name": "Bank Multi Arta Sentosa"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "NATIONALNOBU",
+            "name": "Bank Nationalnobu"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "NUSANTARA_PARAHYANGAN",
+            "name": "Bank Nusantara Parahyangan"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BOC",
+            "name": "Bank of China (BOC)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "INDIA",
+            "name": "Bank of India Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "PANIN_SYR",
+            "name": "Bank Panin Syariah"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "PERMATA",
+            "name": "Bank Permata"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BANGKOK",
+            "name": "Bangkok Bank"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "ANDARA",
+            "name": "Bank Andara"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BUKOPIN",
+            "name": "Bank Bukopin"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "CAPITAL",
+            "name": "Bank Capital Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "DBS",
+            "name": "Bank DBS Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "DKI",
+            "name": "Bank DKI"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "DKI_UUS",
+            "name": "Bank DKI UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "HANA",
+            "name": "Bank Hana"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "HIMPUNAN_SAUDARA",
+            "name": "Bank Himpunan Saudara 1906"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "ICBC",
+            "name": "Bank ICBC Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "JASA_JAKARTA",
+            "name": "Bank Jasa Jakarta"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MASPION",
+            "name": "Bank Maspion Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MAYAPADA",
+            "name": "Bank Mayapada International"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MIZUHO",
+            "name": "Bank Mizuho Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MNC_INTERNASIONAL",
+            "name": "Bank MNC Internasional"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "OCBC",
+            "name": "Bank OCBC NISP"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "RESONA",
+            "name": "Bank Resona Perdania"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "AGRONIAGA",
+            "name": "Bank BRI Agroniaga"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BISNIS_INTERNASIONAL",
+            "name": "Bank Bisnis Internasional"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "GANESHA",
+            "name": "Bank Ganesha"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MAYORA",
+            "name": "Bank Mayora"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MEGA",
+            "name": "Bank Mega"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BAML",
+            "name": "Bank of America Merill-Lynch"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "TOKYO",
+            "name": "Bank of Tokyo Mitsubishi UFJ"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "PERMATA_UUS",
+            "name": "Bank Permata UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SAHABAT_SAMPOERNA",
+            "name": "Bank Sahabat Sampoerna"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BRI_SYR",
+            "name": "Bank Syariah BRI"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BUKOPIN_SYR",
+            "name": "Bank Syariah Bukopin"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MANDIRI_SYR",
+            "name": "Bank Syariah Mandiri"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "TABUNGAN_PENSIUNAN_NASIONAL",
+            "name": "Bank Tabungan Pensiunan Nasional"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "VICTORIA_INTERNASIONAL",
+            "name": "Bank Victoria Internasional"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "WOORI",
+            "name": "Bank Woori Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "YUDHA_BHAKTI",
+            "name": "Bank Yudha Bhakti"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "ACEH",
+            "name": "BPD Aceh"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BALI",
+            "name": "BPD Bali"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "JAWA_TENGAH",
+            "name": "BPD Jawa Tengah"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "KALIMANTAN_SELATAN",
+            "name": "BPD Kalimantan Selatan"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "RIAU_DAN_KEPRI_UUS",
+            "name": "BPD Riau Dan Kepri UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SULSELBAR_UUS",
+            "name": "BPD Sulselbar UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SUMSEL_DAN_BABEL",
+            "name": "BPD Sumsel Dan Babel"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "CITIBANK",
+            "name": "Citibank"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "HSBC",
+            "name": "HSBC Indonesia (formerly Bank Ekonomi Raharja)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SHINHAN",
+            "name": "Bank Shinhan Indonesia (formerly Bank Metro Express)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BANTEN",
+            "name": "BPD Banten (formerly Bank Pundi Indonesia)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "JTRUST",
+            "name": "Bank JTrust Indonesia (formerly Bank Mutiara)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "CCB",
+            "name": "China Construction Bank Indonesia (formerly Bank Antar Daerah and Bank Windu Kentjana International)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SINARMAS_UUS",
+            "name": "Bank Sinarmas UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "AMAR",
+            "name": "Bank Amar Indonesia (formerly Anglomas International Bank)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SHOPEEPAY",
+            "name": "ShopeePay"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BSI",
+            "name": "Bank Syariah Indonesia (BSI)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MITSUI",
+            "name": "Bank Sumitomo Mitsui Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BTN_UUS",
+            "name": "Bank Tabungan Negara (BTN) UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "UOB",
+            "name": "Bank UOB Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "ACEH_UUS",
+            "name": "BPD Aceh UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "KALIMANTAN_BARAT_UUS",
+            "name": "BPD Kalimantan Barat UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "KALIMANTAN_SELATAN_UUS",
+            "name": "BPD Kalimantan Selatan UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "KALIMANTAN_TENGAH",
+            "name": "BPD Kalimantan Tengah"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "KALIMANTAN_TIMUR",
+            "name": "BPD Kalimantan Timur"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "NUSA_TENGGARA_BARAT_UUS",
+            "name": "BPD Nusa Tenggara Barat UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "PAPUA",
+            "name": "BPD Papua"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SULAWESI",
+            "name": "BPD Sulawesi Tengah"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SULAWESI_TENGGARA",
+            "name": "BPD Sulawesi Tenggara"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SUMATERA_BARAT",
+            "name": "BPD Sumatera Barat"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SUMSEL_DAN_BABEL_UUS",
+            "name": "BPD Sumsel Dan Babel UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SUMUT_UUS",
+            "name": "BPD Sumut UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "JPMORGAN",
+            "name": "JP Morgan Chase Bank"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "PRIMA_MASTER",
+            "name": "Prima Master Bank"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MITRA_NIAGA",
+            "name": "Bank Mitra Niaga"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "EXIMBANK",
+            "name": "Indonesia Eximbank (formerly Bank Ekspor Indonesia)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "WOORI_SAUDARA",
+            "name": "Bank Woori Saudara Indonesia 1906 (formerly Bank Himpunan Saudara and Bank Woori Indonesia)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "OKE",
+            "name": "Bank Oke Indonesia (formerly Bank Andara)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MANDIRI_ECASH",
+            "name": "Mandiri E-Cash"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "DANA",
+            "name": "DANA"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SBI_INDONESIA",
+            "name": "Bank SBI Indonesia"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MEGA_SYR",
+            "name": "Bank Syariah Mega"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BTN",
+            "name": "Bank Tabungan Negara (BTN)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BENGKULU",
+            "name": "BPD Bengkulu"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "JAMBI",
+            "name": "BPD Jambi"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "JAMBI_UUS",
+            "name": "BPD Jambi UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "JAWA_TENGAH_UUS",
+            "name": "BPD Jawa Tengah UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "JAWA_TIMUR",
+            "name": "BPD Jawa Timur"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "JAWA_TIMUR_UUS",
+            "name": "BPD Jawa Timur UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "KALIMANTAN_TIMUR_UUS",
+            "name": "BPD Kalimantan Timur UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MALUKU",
+            "name": "BPD Maluku"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "NUSA_TENGGARA_BARAT",
+            "name": "BPD Nusa Tenggara Barat"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "NUSA_TENGGARA_TIMUR",
+            "name": "BPD Nusa Tenggara Timur"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SULUT",
+            "name": "BPD Sulut"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SUMUT",
+            "name": "BPD Sumut"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "DEUTSCHE",
+            "name": "Deutsche Bank"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "HSBC_UUS",
+            "name": "Hongkong and Shanghai Bank Corporation (HSBC) UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "RBS",
+            "name": "Royal Bank of Scotland (RBS)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "STANDARD_CHARTERED",
+            "name": "Standard Charted Bank"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "ARTA_NIAGA_KENCANA",
+            "name": "Bank Arta Niaga Kencana"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BRI",
+            "name": "Bank Rakyat Indonesia (BRI)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MAYBANK",
+            "name": "Bank Maybank"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BTPN_SYARIAH",
+            "name": "BTPN Syariah (formerly BTPN UUS and Bank Sahabat Purba Danarta)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "LINKAJA",
+            "name": "LinkAja"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "VICTORIA_SYR",
+            "name": "Bank Victoria Syariah"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "DAERAH_ISTIMEWA",
+            "name": "BPD Daerah Istimewa Yogyakarta (DIY)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "DAERAH_ISTIMEWA_UUS",
+            "name": "BPD Daerah Istimewa Yogyakarta (DIY) UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "KALIMANTAN_BARAT",
+            "name": "BPD Kalimantan Barat"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "LAMPUNG",
+            "name": "BPD Lampung"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "RIAU_DAN_KEPRI",
+            "name": "BPD Riau Dan Kepri"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SULSELBAR",
+            "name": "BPD Sulselbar"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "SUMATERA_BARAT_UUS",
+            "name": "BPD Sumatera Barat UUS"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "CENTRATAMA",
+            "name": "Centratama Nasional Bank"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "BNI",
+            "name": "Bank Negara Indonesia (BNI)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MANDIRI_TASPEN",
+            "name": "Mandiri Taspen Pos (formerly Bank Sinar Harapan Bali)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "QNB_INDONESIA",
+            "name": "Bank QNB Indonesia (formerly Bank QNB Kesawan)"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "GOPAY",
+            "name": "GoPay"
+        },
+        {
+            "can_disburse": true,
+            "can_name_validate": true,
+            "code": "MESTIKA_DHARMA",
+            "name": "Bank Mestika Dharma"
+        }
+    ],
+    "from_secret": false
+}

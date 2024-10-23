@@ -1,0 +1,9 @@
+{
+    "name": "EWALLET_TYPES",
+    "value": [
+        "ovo",
+        "qris",
+        "qris_static"
+    ],
+    "from_secret": false
+}

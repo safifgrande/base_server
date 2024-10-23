@@ -1,0 +1,124 @@
+{
+    "name": "PAYMENT_TYPES",
+    "value": [
+        {
+            "allow_split": true,
+            "min_payment": false,
+            "notes": {
+                "en": "Regular payment for all transactions.",
+                "id": "Payment reguler untuk semua transaksi."
+            },
+            "refundable": true,
+            "rounding_permission": true,
+            "static_value": true,
+            "type": "cash",
+            "use_for": [
+                "transaction",
+                "invoice",
+                "refund"
+            ],
+            "visible": true
+        },
+        {
+            "allow_split": false,
+            "min_payment": false,
+            "notes": {
+                "en": "To give free transactions. \n Cannot be used for refund. \n Cannot be combined with other media.",
+                "id": "Untuk memberi transaksi gratis. \n Tidak bisa digunakan untuk refund. \n Tidak bisa digabung dengan media lain."
+            },
+            "refundable": false,
+            "rounding_permission": false,
+            "static_value": false,
+            "type": "compliment",
+            "use_for": [
+                "transaction"
+            ],
+            "visible": true
+        },
+        {
+            "allow_split": true,
+            "min_payment": true,
+            "notes": {
+                "en": "Regular payments for all transactions using digital money.",
+                "id": "Payment reguler untuk semua transaksi menggunakan uang digital."
+            },
+            "refundable": true,
+            "rounding_permission": false,
+            "static_value": false,
+            "type": "card",
+            "use_for": [
+                "transaction",
+                "invoice",
+                "refund"
+            ],
+            "visible": true
+        },
+        {
+            "allow_split": false,
+            "min_payment": true,
+            "notes": {
+                "en": "Regular payments for all transactions using electronic wallets.",
+                "id": "Digunakan untuk transaksi invoice refund dan sdo"
+            },
+            "refundable": true,
+            "rounding_permission": false,
+            "static_value": false,
+            "type": "ewallet",
+            "use_for": [
+                "transaction",
+                "invoice",
+                "sdo"
+            ],
+            "visible": true
+        },
+        {
+            "allow_split": false,
+            "min_payment": true,
+            "notes": {
+                "en": "Cannot be used for refund and invoice.",
+                "id": "Tidak bisa digunakan untuk refund dan invoice."
+            },
+            "refundable": true,
+            "rounding_permission": false,
+            "static_value": false,
+            "type": "other",
+            "use_for": [
+                "transaction"
+            ],
+            "visible": true
+        },
+        {
+            "allow_split": false,
+            "min_payment": false,
+            "notes": {
+                "en": "Can only be used for members. \n Cannot be used for refund. \n Cannot be combined with other media.",
+                "id": "Hanya bisa digunakan untuk member. \n Tidak bisa digunakan untuk refund. \n Tidak bisa digabung dengan media lain."
+            },
+            "refundable": true,
+            "rounding_permission": false,
+            "static_value": false,
+            "type": "invoice",
+            "use_for": [
+                "transaction"
+            ],
+            "visible": true
+        },
+        {
+            "allow_split": true,
+            "min_payment": false,
+            "notes": {
+                "en": "Cannot be used for refund.",
+                "id": "Tidak bisa digunakan untuk refund."
+            },
+            "refundable": false,
+            "rounding_permission": false,
+            "static_value": true,
+            "type": "voucher",
+            "use_for": [
+                "transaction"
+            ],
+            "visible": false
+        }
+    ],
+    "from_secret": false
+}

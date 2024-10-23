@@ -1,0 +1,10 @@
+{
+  "name": "XENDIT_EXPIRATION",
+  "value": {
+    "license": {
+      "type": "d",
+      "value": 4
+    }
+  },
+  "from_secret": false
+}
