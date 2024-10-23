@@ -18,7 +18,7 @@ module.exports = async (e, payload, source = "", user) => {
 
   if (!errorCode) {
     errorCode = "E40001BE";
-    await BuildSendError();
+    // await BuildSendError();
   } else {
     errorCode = errorCode[0];
   }

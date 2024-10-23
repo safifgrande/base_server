@@ -12,9 +12,10 @@ const authMiddleware = (req, res, next) => {
       context.values.get("CUSTOM_JWT_PROVIDER")
     );
 
-    // Attach the user from the token to the request
+    const userData = decoded?.payload?.data;
     context.user.data = {
-      ...decoded?.payload?.data,
+      ...userData,
+      user_id: userData._id,
     };
 
     // Continue to the next middleware or route handler
