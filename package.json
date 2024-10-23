@@ -2,7 +2,6 @@
   "name": "mdbengine",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,6 +10,7 @@
   "description": "",
   "dependencies": {
     "axios": "^1.7.7",
+    "bson": "^6.9.0",
     "crypto": "^1.0.1",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",

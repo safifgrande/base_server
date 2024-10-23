@@ -1,5 +1,3 @@
-const jwt = require("jsonwebtoken");
-
 const authMiddleware = (req, res, next) => {
   const token = req.header("Authorization");
 
@@ -9,14 +7,14 @@ const authMiddleware = (req, res, next) => {
 
   try {
     // Verify the token
-    const decoded = jwt.verify(
+    const decoded = utils.jwt.decode(
       token,
       context.values.get("CUSTOM_JWT_PROVIDER")
     );
 
     // Attach the user from the token to the request
     context.user.data = {
-      ...decoded.data,
+      ...decoded?.payload?.data,
     };
 
     // Continue to the next middleware or route handler

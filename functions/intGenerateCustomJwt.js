@@ -1,5 +1,3 @@
-const jwt = require("jsonwebtoken");
-
 module.exports = (payload) => {
   try {
     return generateJWT(payload);
@@ -14,7 +12,8 @@ const generateJWT = (payload) => {
   const exp = new Date();
   exp.setFullYear(exp.getFullYear() + 1, exp.getMonth(), exp.getDay());
 
-  return jwt.sign(
+  return utils.jwt.encode(
+    "HS256",
     {
       exp: Date.parse(exp),
       data: {
@@ -25,11 +24,8 @@ const generateJWT = (payload) => {
     },
     context.values.get("CUSTOM_JWT_PROVIDER"),
     {
-      algorithm: "HS256",
-      header: {
-        alg: "HS256",
-        typ: "JWT",
-      },
+      alg: "HS256",
+      typ: "JWT",
     }
   );
 };
