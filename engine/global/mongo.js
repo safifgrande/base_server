@@ -50,7 +50,6 @@ class MongoConnection {
 
   getConnection() {
     if (this.client && this.isConnected()) {
-      console.log("Using Existing Connection");
       return this.client;
     } else {
       // TODO tanpa await gak bisa return

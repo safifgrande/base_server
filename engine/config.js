@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const BSON = require("bson");
 
 const globalDir = path.join(__dirname, "/context");
 
@@ -18,5 +19,21 @@ module.exports = () => {
   mongoInstance.connect();
 
   global.authMiddleware = require("./middleware/authMiddleware");
-  global.BSON = require("bson");
+
+  // TODO ?
+  const handler = {
+    get: (target, prop) => {
+      if (prop === "ObjectId") {
+        const ObjectIdWrapper = (...args) => {
+          return new BSON.ObjectId(...args);
+        };
+        Object.assign(ObjectIdWrapper, BSON.ObjectId);
+        ObjectIdWrapper.prototype = BSON.ObjectId.prototype;
+        return ObjectIdWrapper;
+      }
+      return target[prop];
+    },
+  };
+
+  global.BSON = new Proxy(BSON, handler);
 };
