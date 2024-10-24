@@ -1,5 +1,23 @@
 const login = require("./api/v1/login");
 const clientUser = require("./functions/clientUser");
+const clientPaymentMedia = require("./functions/clientPaymentMedia");
+
+const pathExtractor = (path, func, useMiddleware) => {
+  const handler = async (req, res) => {
+    res.json({
+      result: await func(req.body),
+    });
+  };
+
+  const basicPath = {
+    path: path,
+    method: "post",
+    handler,
+  };
+
+  if (useMiddleware) basicPath.middleware = authMiddleware;
+  return basicPath;
+};
 
 const public_route = [
   {
@@ -10,16 +28,8 @@ const public_route = [
 ];
 
 const protected_route = [
-  {
-    path: "/clientUser",
-    middleware: authMiddleware,
-    method: "post",
-    handler: async (req, res) => {
-      res.json({
-        result: await clientUser(req.body),
-      });
-    },
-  },
+  pathExtractor("/clientUser", clientUser, true),
+  pathExtractor("/clientPaymentMedia", clientPaymentMedia, true),
 ];
 
 module.exports = { public_route, protected_route };
