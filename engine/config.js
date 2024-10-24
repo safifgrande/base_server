@@ -20,20 +20,17 @@ module.exports = () => {
 
   global.authMiddleware = require("./middleware/authMiddleware");
 
-  // TODO ?
-  const handler = {
-    get: (target, prop) => {
-      if (prop === "ObjectId") {
-        const ObjectIdWrapper = (...args) => {
-          return new BSON.ObjectId(...args);
-        };
-        Object.assign(ObjectIdWrapper, BSON.ObjectId);
-        ObjectIdWrapper.prototype = BSON.ObjectId.prototype;
-        return ObjectIdWrapper;
-      }
-      return target[prop];
-    },
+  const OriginalObjectId = BSON.ObjectId;
+
+  BSON.ObjectId = function ObjectId(...args) {
+    if (!(this instanceof ObjectId)) {
+      return new OriginalObjectId(...args);
+    }
+    return new OriginalObjectId(...args);
   };
 
-  global.BSON = new Proxy(BSON, handler);
+  BSON.ObjectId.prototype = OriginalObjectId.prototype;
+  Object.setPrototypeOf(BSON.ObjectId, OriginalObjectId);
+
+  global.BSON = BSON;
 };

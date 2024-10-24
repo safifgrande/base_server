@@ -11,24 +11,6 @@ const public_route = [
 
 const protected_route = [
   {
-    path: "/data",
-    middleware: authMiddleware,
-    method: "get",
-    handler: async (req, res) => {
-      res.send(
-        await context.http.get("https://jsonplaceholder.typicode.com/todos/")
-      );
-    },
-  },
-  {
-    path: "/get_user",
-    middleware: authMiddleware,
-    method: "get",
-    handler: async (req, res) => {
-      res.send({ data: context.user.data });
-    },
-  },
-  {
     path: "/clientUser",
     middleware: authMiddleware,
     method: "post",
