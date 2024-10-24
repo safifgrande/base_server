@@ -1,6 +1,10 @@
 const login = require("./api/v1/login");
 const clientUser = require("./functions/clientUser");
 const clientPaymentMedia = require("./functions/clientPaymentMedia");
+const adminEwallet = require("./functions/adminEwallet")
+const clientBankAccount = require("./functions/clientBankAccount");
+const clientBillDesign = require("./functions/clientBillDesign");
+const clientBillingHistory = require("./functions/clientBillingHistory")
 
 const pathExtractor = (path, func, useMiddleware) => {
   const handler = async (req, res) => {
@@ -30,6 +34,10 @@ const public_route = [
 const protected_route = [
   pathExtractor("/clientUser", clientUser, true),
   pathExtractor("/clientPaymentMedia", clientPaymentMedia, true),
+  pathExtractor("/adminEwallet", adminEwallet, true),
+  pathExtractor("/clientBankAccount", clientBankAccount, true),
+  pathExtractor("/clientBillDesign", clientBillDesign, true),
+  pathExtractor("/clientBillingHistory", clientBillingHistory, true)
 ];
 
 module.exports = { public_route, protected_route };
