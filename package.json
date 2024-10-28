@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "4": "^0.0.0",
     "axios": "^1.7.7",
     "bson": "^6.9.0",
     "crypto": "^1.0.1",

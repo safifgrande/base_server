@@ -32,12 +32,25 @@ class context {
   }
 
   #http() {
-    const post = async (url, data, options = {}) => {
+    const post = async ({ url, headers, body, encodeBodyAsJSON = false }) => {
       try {
-        const response = await axios.post(`${url}`, data, options);
-        return response.data;
+        // Set default headers if not provided
+        const config = {
+          headers: headers || {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        };
+
+        const data = encodeBodyAsJSON ? JSON.stringify(body) : body;
+
+        const response = await axios.post(url, data, config);
+        console.log(response.data)
+
+        // Return the response data
+        return response;
       } catch (error) {
-        console.error("Error in POST request:", error.message);
+        console.error('Error in context.http.post:', error);
         throw error;
       }
     };

@@ -27,19 +27,26 @@ const mainHandler = (payload) => {
   const urlSendEmail = `${emailServer}/send-email`;
 
   const getJWT = async () => {
-    const getToken = await context.http.post({
-      url: urlGetToken,
-      headers: {
-        "Content-Type": ["application/json"],
-        Accept: ["application/json"],
-      },
-      body: {
-        email: payload.to,
-      },
-      encodeBodyAsJSON: true,
-    });
+    try {
+      const getToken = await context.http.post({
+        url: urlGetToken,
+        headers: {
+          "Content-Type": ["application/json"],
+          Accept: ["application/json"],
+        },
+        body: {
+          email: payload.to,
+        },
+        encodeBodyAsJSON: true,
+      });
 
-    return JSON.parse(getToken.body.text()).token;
+      console.log("here token >>>", getToken.data.token)
+      return getToken.data.token
+      //TODO: Response sebelumnya
+      // return JSON.parse(getToken.body.text()).token; 
+    } catch (error) {
+      console.log(error.message, "<<< error")
+    }
   };
 
   const sendEmail = async (tokenJwt) => {
@@ -53,7 +60,10 @@ const mainHandler = (payload) => {
       body: JSON.stringify(payload),
     });
 
-    const resultBody = JSON.parse(result.body.text());
+    console.log(result.data, "<<< this result")
+
+    const resultBody = result.data
+    // const resultBody = JSON.parse(result.body.text());
 
     if (resultBody.status != 200) {
       throw new Error("Cannot send email verification to : " + payload.to);
