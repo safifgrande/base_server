@@ -86,7 +86,38 @@ class context {
   }
 
   #services() {
-    return mongoInstance.getConnection();
+    const mongoClient = mongoInstance.getConnection();
+
+    const originalDbMethod = mongoClient.db.bind(mongoClient);
+
+    mongoClient.db = (dbName) => {
+      const dbInstance = originalDbMethod(dbName);
+
+      // untuk intercept insertMany
+      const originalCollectionMethod = dbInstance.collection.bind(dbInstance);
+      dbInstance.collection = (collectionName) => {
+        const collectionInstance = originalCollectionMethod(collectionName);
+
+        const mongodbInsertMany =
+          collectionInstance.insertMany.bind(collectionInstance);
+        collectionInstance.insertMany = async (...param) => {
+          const result = await mongodbInsertMany(...param);
+          if (result.acknowledged) {
+            return {
+              insertedIds: Object.values(result.insertedIds).map((id) => id),
+            };
+          }
+
+          return result;
+        };
+
+        return collectionInstance;
+      };
+
+      return dbInstance;
+    };
+
+    return mongoClient;
   }
 
   #execute(functionName, ...args) {

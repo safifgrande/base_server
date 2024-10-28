@@ -107,13 +107,12 @@ module.exports = async (payload) => {
     await generalFunction(payload);
     return true;
   } catch (error) {
-    console.log(error)
-    // return context.functions.execute(
-    //   "handleCatchError",
-    //   error,
-    //   payload,
-    //   "adminRegisterClient"
-    // );
+    return context.functions.execute(
+      "handleCatchError",
+      error,
+      payload,
+      "adminRegisterClient"
+    );
   }
 };
 
@@ -146,29 +145,19 @@ const generalFunction = async (payload) => {
   }
 
   async function registerClient() {
-    console.log("masuk sini")
-
     // validate payload
     await validate();
 
-    try {
-
-      user_data = await dbInsertDataUser();
-      newUserLicense = construcUserLicense();
-
-      if (licensePaymentMedia.name.toLowerCase() === "other") {
-        return await processPaymentOther();
-      }
-      return await processPaymentCash();
-    } catch (error) {
-      console.log(error, "<<<< error")
-    }
     // insert user data
-
+    user_data = await dbInsertDataUser();
     // // construct data license
+    newUserLicense = construcUserLicense();
 
     // process by type payment
-
+    if (licensePaymentMedia.name.toLowerCase() === "other") {
+      return await processPaymentOther();
+    }
+    return await processPaymentCash();
   }
 
   async function addLicensePaymentCash() {
@@ -262,7 +251,6 @@ const generalFunction = async (payload) => {
 
     //save data user_license_payment, user_license, user_license_device
     const deviceIds = await dbInsertDataLicense(data);
-    console.log(deviceIds)
 
     // get region
     const region = await getRegName();
@@ -278,13 +266,7 @@ const generalFunction = async (payload) => {
     // update devices license payment
     let detailDevicesExpired = [];
     const today = new Date();
-
-    const data_array = Object.values(deviceIds.insertedIds)
-
-    // TODO: Sebelumnya langsung dapat array dari insertedIds tetapi dapat object dari return mongodb driver
-    // Sehingga harus di parse ke araay dulu
-    //deviceIds.insertedIds.map((id) => { 
-    data_array.map((id) => {
+    deviceIds.insertedIds.map((id) => {
       const user_device = data.user_license_device.find(
         (e) => e._id.toString() === id.toString()
       );
@@ -297,12 +279,9 @@ const generalFunction = async (payload) => {
 
       detailDevicesExpired.push(obj);
     });
-
-    console.log(detailDevicesExpired)
-
     await dbUpdateLicensePayment(filterLicensePaymentId, {
       detailDevicesExpired,
-      devices: data_array,
+      devices: deviceIds.insertedIds,
     });
 
     // send email
@@ -666,7 +645,7 @@ const generalFunction = async (payload) => {
       totalPayment == 0
         ? parseFloat(0)
         : totalPayment /
-        (parseFloat(licensePriceLevel?.tax ?? license_data.tax) / 100 + 1);
+          (parseFloat(licensePriceLevel?.tax ?? license_data.tax) / 100 + 1);
 
     return {
       _id: new BSON.ObjectId(),
@@ -693,16 +672,16 @@ const generalFunction = async (payload) => {
         subTotal == 0
           ? parseFloat(subTotal)
           : licensePriceLevel?.tax
-            ? parseFloat(licensePriceLevel.tax)
-            : parseFloat(license_data.tax),
+          ? parseFloat(licensePriceLevel.tax)
+          : parseFloat(license_data.tax),
       price: licensePriceLevel?.price
         ? parseFloat(licensePriceLevel.price)
         : parseFloat(license_data.total),
       sub_total: parseFloat(subTotal),
       grandTotal: licensePriceLevel?.price
         ? parseFloat(
-          licensePriceLevel.price * device_qty - licensePriceLevel.discNominal
-        )
+            licensePriceLevel.price * device_qty - licensePriceLevel.discNominal
+          )
         : parseFloat(totalPayment),
       operator: ulp.operator.public,
       type: license_data?._id ? ulp.type.subscribed : ulp.type.custom,
@@ -719,8 +698,8 @@ const generalFunction = async (payload) => {
     let lastLicenseDevice = body?.email
       ? 0
       : await intRegisterOrExtend.getLastLicense({
-        license: BSON.ObjectId(user_data.license.toString()),
-      });
+          license: BSON.ObjectId(user_data.license.toString()),
+        });
 
     const { device_qty } = body;
 
@@ -876,7 +855,6 @@ const generalFunction = async (payload) => {
   }
 
   async function dbGetDetailBilling(filter) {
-
     return db
       .collection(collectionNames.user_license_payment)
       .aggregate([
@@ -909,7 +887,7 @@ const generalFunction = async (payload) => {
             localField: "master_license_price_level",
             foreignField: "_id",
             as: "priceLevel",
-          }
+          },
         },
         {
           $unwind: {
