@@ -44,13 +44,19 @@ class context {
 
         const data = encodeBodyAsJSON ? JSON.stringify(body) : body;
 
-        const response = await axios.post(url, data, config);
-        console.log(response.data)
+        let response = await axios.post(url, data, config);
+        response = {
+          ...response,
+          statusCode: response.status,
+          body: {
+            text: () => JSON.stringify(response.data),
+          },
+        };
 
         // Return the response data
         return response;
       } catch (error) {
-        console.error('Error in context.http.post:', error);
+        console.error("Error in context.http.post:", error);
         throw error;
       }
     };

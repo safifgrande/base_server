@@ -33,4 +33,5 @@ module.exports = () => {
   Object.setPrototypeOf(BSON.ObjectId, OriginalObjectId);
 
   global.BSON = BSON;
+  global.EJSON = require("bson").EJSON;
 };
