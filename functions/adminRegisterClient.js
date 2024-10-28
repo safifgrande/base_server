@@ -220,7 +220,11 @@ const generalFunction = async (payload) => {
     const deviceIds = await dbInsertDataAddLicense(data);
 
     let detailDevicesExpired = [];
-    deviceIds.insertedIds.map((id) => {
+    // TODO: Sebelumnya langsung dapat array dari insertedIds tetapi dapat object dari return mongodb driver
+    // Sehingga harus di parse ke araay dulu
+    const data_array = Object.values(deviceIds.insertedIds)
+    //deviceIds.insertedIds.map((id) => { 
+    data_array.map((id) => {
       const user_device = data.user_license_device.find(
         (e) => e._id.toString() === id.toString()
       );
@@ -239,7 +243,7 @@ const generalFunction = async (payload) => {
     // update devices license payment
     await dbUpdateLicensePayment(filterLicensePaymentId, {
       detailDevicesExpired,
-      devices: deviceIds.insertedIds,
+      devices: data_array,
     });
     // send email
     await formatingAndSendEmail(filterLicensePaymentId);

@@ -40,10 +40,7 @@ const mainHandler = (payload) => {
         encodeBodyAsJSON: true,
       });
 
-      console.log("here token >>>", getToken.data.token)
-      return getToken.data.token
-      //TODO: Response sebelumnya
-      // return JSON.parse(getToken.body.text()).token; 
+      return JSON.parse(getToken.body.text()).token;
     } catch (error) {
       console.log(error.message, "<<< error")
     }
@@ -60,10 +57,7 @@ const mainHandler = (payload) => {
       body: JSON.stringify(payload),
     });
 
-    console.log(result.data, "<<< this result")
-
-    const resultBody = result.data
-    // const resultBody = JSON.parse(result.body.text());
+    const resultBody = JSON.parse(result.body.text());
 
     if (resultBody.status != 200) {
       throw new Error("Cannot send email verification to : " + payload.to);
