@@ -13,15 +13,17 @@ const authMiddleware = (req, res, next) => {
     );
 
     const userData = decoded?.payload?.data;
-    context.user.data = {
+    const user = {
       ...userData,
       user_id: userData._id,
     };
+    context.user.data = user;
+
+    req.user = user;
 
     // Continue to the next middleware or route handler
     next();
   } catch (err) {
-    console.log(">>> ", err.message);
     return res.status(401).json({ message: "Invalid token" });
   }
 };
