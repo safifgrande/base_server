@@ -10,9 +10,7 @@ const clientEwallet = require("./functions/clientEwallet");
 
 const pathExtractor = (path, func, useMiddleware) => {
   const handler = async (req, res) => {
-    res.json({
-      result: await func(req.body),
-    });
+    res.json(await func(req.body));
   };
 
   const basicPath = {
