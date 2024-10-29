@@ -3,12 +3,14 @@ class BridgeMiddleware {
     this.request = null;
     this.response = null;
     this.path = null;
+    this.startTime = null;
   }
 
   initiate(req, res, next) {
     this.request = req;
     this.response = res;
     this.path = req.path;
+    this.startTime = process.hrtime();
 
     // Intercept JSON
     const originalJson = res.json.bind(res);
@@ -23,19 +25,18 @@ class BridgeMiddleware {
   }
 
   logResponse(body) {
-    logger.info(
-      `${this.path}\n${
-        this.request.user ? "User : " + this.request.user?.name : ""
-      }\n${"Req Body : " + JSON.stringify(this.request.body, null, 2)}\n${
-        "Response : " + JSON.stringify(body, null, 2)
-      }\n`
-    );
-    // console.log(
-    //   `*********************      ${this.path}      *********************`
-    // );
-    // if (this.request.user) console.log("User :", this.request.user?.name);
-    // console.log("Req Body :", this.request.body);
-    // console.log("Response :", JSON.stringify(body, null, 4));
+    const [seconds, nanoseconds] = process.hrtime(this.startTime);
+    const processingTimeMs = (seconds + nanoseconds / 1000000000).toFixed(3);
+
+    const log = [
+      "Processing Time : " + processingTimeMs + "s",
+      "Path : " + this.path,
+      this.request.user ? "User : " + this.request.user?.name : "",
+      "Req Body : " + JSON.stringify(this.request.body, null, 2),
+      "Response : " + JSON.stringify(body, null, 2),
+    ];
+
+    logger.info(`\n${log.join("\n")}\n`);
   }
 }
 

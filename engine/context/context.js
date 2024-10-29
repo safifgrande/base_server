@@ -157,8 +157,7 @@ class context {
   }
 
   #loadEnvironmentValues() {
-    // TODO process env
-    const tag = "development";
+    const tag = process.env.NODE_ENV || "development";
     const filePath = path.join(process.cwd(), "environments", `${tag}.json`);
     const envFile = require(filePath);
     return { tag, values: envFile?.values };
