@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "docker-push": "docker push 182399681516.dkr.ecr.ap-southeast-2.amazonaws.com/grande/server_base:latest",
+    "docker-build": "docker build -t grande/server_base . && docker tag grande/server_base:latest 182399681516.dkr.ecr.ap-southeast-2.amazonaws.com/grande/server_base:latest",
     "dev": "NODE_ENV=development nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
