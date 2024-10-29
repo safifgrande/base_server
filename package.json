@@ -13,7 +13,6 @@
   "description": "",
   "dependencies": {
     "@sentry/node": "^8.35.0",
-    "@sentry/profiling-node": "^8.35.0",
     "axios": "^1.7.7",
     "bson": "^6.9.0",
     "crypto": "^1.0.1",
