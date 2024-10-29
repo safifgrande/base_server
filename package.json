@@ -15,6 +15,9 @@
     "crypto": "^1.0.1",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.10.0"
+    "mongodb": "^6.10.0",
+    "pino": "^9.5.0",
+    "pino-daily-rotate-file": "^0.0.1",
+    "pino-pretty": "^11.3.0"
   }
 }

@@ -23,12 +23,19 @@ class BridgeMiddleware {
   }
 
   logResponse(body) {
-    console.log(
-      `*********************      ${this.path}      *********************`
+    logger.info(
+      `${this.path}\n${
+        this.request.user ? "User : " + this.request.user?.name : ""
+      }\n${"Req Body : " + JSON.stringify(this.request.body, null, 2)}\n${
+        "Response : " + JSON.stringify(body, null, 2)
+      }\n`
     );
-    if (this.request.user) console.log("User :", this.request.user?.name);
-    console.log("Req Body :", this.request.body);
-    console.log("Response :", body);
+    // console.log(
+    //   `*********************      ${this.path}      *********************`
+    // );
+    // if (this.request.user) console.log("User :", this.request.user?.name);
+    // console.log("Req Body :", this.request.body);
+    // console.log("Response :", JSON.stringify(body, null, 4));
   }
 }
 

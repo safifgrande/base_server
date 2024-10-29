@@ -1,4 +1,5 @@
 require("./engine/config")();
+require("./engine/logger")();
 const express = require("express");
 const { public_route, protected_route } = require("./routes");
 const BridgeMiddleware = require("./engine/middleware/bridgeMiddleware");
