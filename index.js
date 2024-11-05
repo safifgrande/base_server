@@ -7,7 +7,7 @@ const { routes } = require("./routes");
 const Sentry = require("@sentry/node");
 
 const app = express();
-const port = 3000;
+const port = 6000;
 
 app.use(express.json());
 

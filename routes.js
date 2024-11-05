@@ -16,20 +16,19 @@ const pathExtractor = (path, func, useMiddleware) => {
 };
 
 const routes = pathConfig.map((config) => {
-  if (config.private) {
+  if (config.api) {
+    return {
+      path: config.path,
+      method: "post",
+      handler: require(`./api/${config.handler}`),
+    };
+  } else {
     return pathExtractor(
       config.path,
       require(`./functions/${config.handler}`),
       config.private
     );
   }
-  return {
-    path: config.path,
-    method: "post",
-    handler: config.api
-      ? require(`./api/${config.handler}`)
-      : require(`./functions/${config.handler}`),
-  };
 });
 
 module.exports = { routes };
