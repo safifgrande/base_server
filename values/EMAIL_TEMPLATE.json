@@ -1,9 +1,0 @@
-{
-    "name": "EMAIL_TEMPLATE",
-    "value": {
-        "forgotPassword": "forgot-password",
-        "register": "register",
-        "verifyEwallet": "verifikasi-ewallet"
-    },
-    "from_secret": false
-}

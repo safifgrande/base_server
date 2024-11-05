@@ -158,9 +158,14 @@ class context {
 
   #loadEnvironmentValues() {
     const tag = process.env.NODE_ENV || "development";
-    const filePath = path.join(process.cwd(), "environments", `${tag}.json`);
-    const envFile = require(filePath);
-    return { tag, values: envFile?.values };
+
+    if (process.env.NODE_ENV) {
+      const filePath = path.join(process.cwd(), "environments", `${tag}.json`);
+      const envFile = require(filePath);
+      return { tag, values: envFile?.values };
+    }
+
+    return { tag, values: {} }
   }
 }
 
