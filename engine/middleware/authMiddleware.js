@@ -12,7 +12,7 @@ const authMiddleware = (req, res, next) => {
       context.values.get("CUSTOM_JWT_PROVIDER")
     );
 
-    const userData = decoded?.payload?.data;
+    const userData = decoded?.payload?.data || {};
     const user = {
       ...userData,
       user_id: userData._id,
