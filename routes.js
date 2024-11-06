@@ -1,13 +1,14 @@
-const pathConfig = require("./functions/config.json");
+const functionsConfig = require("./functions/config.json");
+const apiConfig = require("./api/config.json");
 
-const pathExtractor = (path, func, useMiddleware) => {
+const pathExtractor = (path, func, method, useMiddleware) => {
   const handler = async (req, res) => {
     res.json(await func(req.body));
   };
 
   const basicPath = {
     path: path,
-    method: "post",
+    method: method || "post",
     handler,
   };
 
@@ -15,20 +16,22 @@ const pathExtractor = (path, func, useMiddleware) => {
   return basicPath;
 };
 
-const routes = pathConfig.map((config) => {
-  if (config.api) {
-    return {
-      path: config.path,
-      method: "post",
-      handler: require(`./api/${config.handler}`),
-    };
-  } else {
-    return pathExtractor(
-      config.path,
-      require(`./functions/${config.handler}`),
-      config.private
-    );
-  }
+const funcRoutes = functionsConfig.map((config) => {
+  return pathExtractor(
+    config.path,
+    require(`./functions/${config.handler}`),
+    config.method,
+    config.private
+  );
 });
 
-module.exports = { routes };
+const apiRoutes = apiConfig.map((config) => {
+  return pathExtractor(
+    config.path,
+    require(`./api/${config.handler}`),
+    config.method,
+    config.private
+  );
+});
+
+module.exports = { routes: [...funcRoutes, ...apiRoutes] };
