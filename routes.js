@@ -1,9 +1,9 @@
 const functionsConfig = require("./functions/config.json");
 const apiConfig = require("./api/config.json");
 
-const pathExtractor = (path, func, method, useMiddleware) => {
+const pathExtractor = (path, func, method, useMiddleware, isApi) => {
   const handler = async (req, res) => {
-    res.json(await func(req.body));
+    res.json(await func(isApi ? req : req.body));
   };
 
   const basicPath = {
@@ -30,7 +30,8 @@ const apiRoutes = apiConfig.map((config) => {
     config.path,
     require(`./api/${config.handler}`),
     config.method,
-    config.private
+    config.private,
+    true
   );
 });
 
