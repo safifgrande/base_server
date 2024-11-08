@@ -3,7 +3,7 @@ const apiConfig = require("./api/config.json");
 
 const pathExtractor = (path, func, method, useMiddleware, isApi) => {
   const getArgs = (isApi, req, res, app) => {
-    return isApi ? [req, res, app] : [req.body];
+    return isApi ? [req, res, app] : [req.body, res];
   };
 
   const handler = async (req, res, app) => {
