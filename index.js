@@ -18,14 +18,18 @@ app.use((req, res, next) => bridge.initiate(req, res, next));
 routes
   .filter((route) => !route.middleware)
   .forEach(({ path, method, handler }) => {
-    app[method](path, handler);
+    app[method](path, (req, res) => {
+      handler(req, res, app);
+    });
   });
 
 // PRIVATE API
 routes
   .filter((route) => route.middleware)
   .forEach(({ path, method, middleware, handler }) => {
-    app[method](path, middleware, handler);
+    app[method](path, middleware, (req, res) => {
+      handler(req, res, app);
+    });
   });
 
 // NOTE harus diletakkan dibawah setelah semua routes

@@ -2,8 +2,12 @@ const functionsConfig = require("./functions/config.json");
 const apiConfig = require("./api/config.json");
 
 const pathExtractor = (path, func, method, useMiddleware, isApi) => {
-  const handler = async (req, res) => {
-    res.json(await func(isApi ? req : req.body));
+  const getArgs = (isApi, req, res, app) => {
+    return isApi ? [req, res, app] : [req.body];
+  };
+
+  const handler = async (req, res, app) => {
+    res.json(await func(...getArgs(isApi, req, res, app)));
   };
 
   const basicPath = {
