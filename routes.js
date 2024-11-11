@@ -1,5 +1,4 @@
 const functionsConfig = require("./functions/config.json");
-const apiConfig = require("./api/config.json");
 
 const pathExtractor = (path, func, method, useMiddleware, isApi) => {
   const getArgs = (req, res) => {
