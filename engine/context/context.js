@@ -16,6 +16,7 @@ class context {
     this.http = {
       get: this.#http().get.bind(this),
       post: this.#http().post.bind(this),
+      delete: this.#http().del.bind(this)
     };
     this.user = {
       data: this.#user.bind(this),
@@ -61,9 +62,16 @@ class context {
       }
     };
 
-    const get = async (url, options = {}) => {
+    const get = async ({ url, headers = {} }) => {
       try {
-        const response = await axios.get(`${url}`, options);
+        const config = {
+          headers: headers || {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        };
+
+        const response = await axios.get(`${url}`, config);
         return response.data;
       } catch (error) {
         console.error("Error in GET request:", error.message);
@@ -71,8 +79,27 @@ class context {
       }
     };
 
-    return Object.freeze({ post, get });
+    const del = async ({ url, headers = {} }) => {
+      try {
+        // Set default headers if not provided
+        const config = {
+          headers: headers || {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        };
+
+        let response = await axios.delete(url, config);
+        return response.data;
+      } catch (error) {
+        console.error("Error in context.http.post:", error);
+        throw error;
+      }
+    };
+
+    return Object.freeze({ post, get, del });
   }
+
 
   #values(fileName) {
     const filePath = path.join(process.cwd(), "values", `${fileName}.json`);
