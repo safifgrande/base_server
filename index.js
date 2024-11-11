@@ -6,6 +6,10 @@ const BridgeMiddleware = require("./engine/middleware/bridgeMiddleware");
 const { routes } = require("./routes");
 const Sentry = require("@sentry/node");
 
+const fs = require('fs');
+const path = require('path');
+const modulesPath = path.join(__dirname, 'api');
+
 const app = express();
 const port = 6000;
 
@@ -13,6 +17,17 @@ app.use(express.json());
 
 const bridge = new BridgeMiddleware();
 app.use((req, res, next) => bridge.initiate(req, res, next));
+
+// API
+fs.readdirSync(modulesPath).forEach((folder) => {
+  const moduleRoutePath = path.join(modulesPath, folder, `${folder}.route.js`);
+
+  if (fs.existsSync(moduleRoutePath)) {
+    // Use the folder name as the base path for the module
+    app.use(`/${folder}`, require(moduleRoutePath));
+  }
+});
+
 
 // PUBLIC API
 routes
