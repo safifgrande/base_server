@@ -8,7 +8,7 @@ const Sentry = require("@sentry/node");
 
 const fs = require('fs');
 const path = require('path');
-const modulesPath = path.join(__dirname, 'api');
+const modulesPath = path.join(__dirname, 'http-api');
 
 const app = express();
 const port = 6000;
