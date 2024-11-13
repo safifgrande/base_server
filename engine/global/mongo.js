@@ -8,7 +8,8 @@ class MongoConnection {
   }
 
   // mongodb+srv://HiuPOS:HiuSharkPOS@cluster0.iive8c8.mongodb.net/CORE_DB
-  srv = `mongodb+srv://HiuPOS:HiuSharkPOS@cluster0.iive8c8.mongodb.net/${this.dbName}`;
+  // srv = `mongodb+srv://HiuPOS:HiuSharkPOS@cluster0.iive8c8.mongodb.net/${this.dbName}`;
+  srv = `${process.env.DATABASE_SERVER}/${this.dbName}`;
 
   async connect() {
     if (this.client && this.isConnected()) {

@@ -6,7 +6,7 @@
     "docker-push": "docker push 182399681516.dkr.ecr.ap-southeast-2.amazonaws.com/grande/server_base:latest",
     "docker-build:local": "docker build -t grande/server_base . && docker rmi $(docker images -f \"dangling=true\" -q)",
     "docker-build": "docker build -t grande/server_base . && docker tag grande/server_base:latest 182399681516.dkr.ecr.ap-southeast-2.amazonaws.com/grande/server_base:latest && docker rmi $(docker images -f `dangling=true` -q)",
-    "dev": "nodemon index.js",
+    "dev": "PORT=8000 DATABASE_SERVER=mongodb+srv://HiuPOS:HiuSharkPOS@cluster0.iive8c8.mongodb.net nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -16,12 +16,15 @@
     "@sentry/node": "^8.35.0",
     "axios": "^1.7.7",
     "bson": "^6.9.0",
+    "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.10.0",
     "pino": "^9.5.0",
     "pino-daily-rotate-file": "^0.0.1",
-    "pino-pretty": "^11.3.0"
-  }
+    "pino-pretty": "^11.3.0",
+    "rxjs": "^7.8.1"
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

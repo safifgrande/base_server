@@ -1,0 +1,21 @@
+# docker compose ini tidak bisa jalan di base server
+# copy ke masing2 project
+
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     environment:
+#       SENTRY_URL:
+#       NODE_ENV:
+#       DATABASE_SERVER:
+#     image:
+#     container_name: dev-bo
+#     ports:
+#       - "6001:6000"
+#     volumes:
+#       - ./functions:/app/functions # Mounts your project directory for live updates
+#       - ./api:/app/api
+#       - ./environments:/app/environments
+#       - ./values:/app/values
