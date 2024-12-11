@@ -16,6 +16,19 @@ const port = process.env.PORT || 6000;
 
 app.use(express.json());
 app.use(cors());
+app.use((req, res, next) => {
+  console.log("Context check ================");
+  console.log(context.user.data.user_id);
+  console.log("Context check ================");
+  next();
+});
+
+app.use((req, res, next) => {
+  // if (!req.locals) req.locals = {};
+  // context.coba_user = context.coba_user(req);
+  context.coba_user = {};
+  next();
+});
 
 const bridge = new BridgeMiddleware();
 app.use((req, res, next) => bridge.initiate(req, res, next));
@@ -31,18 +44,22 @@ fs.readdirSync(modulesPath).forEach((folder) => {
 });
 
 // PUBLIC API
+console.log("\n\nPUBLIC API :");
 routes
   .filter((route) => !route.middleware)
   .forEach(({ path, method, handler }) => {
+    console.log(`${path} : ${method.toUpperCase()}`);
     app[method](path, (req, res) => {
       handler(req, res, app);
     });
   });
 
 // PRIVATE API
+console.log("\n\nPRIVATE API :");
 routes
   .filter((route) => route.middleware)
   .forEach(({ path, method, middleware, handler }) => {
+    console.log(`${path} : ${method.toUpperCase()}`);
     app[method](path, middleware, (req, res) => {
       handler(req, res, app);
     });
@@ -53,5 +70,5 @@ routes
 Sentry.setupExpressErrorHandler(app);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`\n\nApp listening on port ${port}`);
 });

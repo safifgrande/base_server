@@ -6,7 +6,6 @@
     "docker-push": "docker push 182399681516.dkr.ecr.ap-southeast-2.amazonaws.com/grande/server_base:latest",
     "docker-build:local": "docker build -t grande/server_base . && docker rmi $(docker images -f \"dangling=true\" -q)",
     "docker-build": "docker build -t grande/server_base . && docker tag grande/server_base:latest 182399681516.dkr.ecr.ap-southeast-2.amazonaws.com/grande/server_base:latest && docker rmi $(docker images -f `dangling=true` -q)",
-    "docker-build:local": "docker build -t grande/server_base . && docker rmi $(docker images -f \"dangling=true\" -q)",
     "dev": "nodemon index.js",
     "local": "DATABASE_SERVER=mongodb+srv://HiuPOS:HiuSharkPOS@cluster0.iive8c8.mongodb.net nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +17,7 @@
     "@sentry/node": "^8.35.0",
     "axios": "^1.7.7",
     "bson": "^6.9.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "express": "^4.21.1",

@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "path": "/clientExample",
+    "handler": "example",
+    "private": true
+  },
+  {
+    "path": "/dea_duluan",
+    "handler": "dea_duluan",
+    "private": true
+  },
+  {
+    "path": "/fandi_akhir",
+    "handler": "fandi_akhir",
+    "private": true
+  },
+  {
+    "path": "/tanpa_auth",
+    "handler": "tanpa_auth",
+    "private": false
+  }
+]

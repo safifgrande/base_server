@@ -1,4 +1,5 @@
 const functionsConfig = require("./functions/config.json");
+const authMiddleware = require("./engine/middleware/authMiddleware.js");
 
 const pathExtractor = (path, func, method, useMiddleware, isApi) => {
   const getArgs = (req, res) => {
@@ -24,7 +25,7 @@ const funcRoutes = functionsConfig.map((config) => {
     config.path,
     require(`./functions/${config.handler}`),
     config.method,
-    config.private
+    config.private,
   );
 });
 
