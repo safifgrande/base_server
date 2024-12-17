@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
+const { getAuthUser } = require("./requestStorage");
 
 class context {
   constructor() {
@@ -16,10 +17,13 @@ class context {
     this.http = {
       get: this.#http().get.bind(this),
       post: this.#http().post.bind(this),
-      delete: this.#http().del.bind(this)
+      delete: this.#http().del.bind(this),
     };
     this.user = {
-      data: this.#user.bind(this),
+      get data() {
+        return getAuthUser() || {};
+      },
+      // data: this.#user.bind(this),
     };
     this.environment = {
       ...this.#loadEnvironmentValues(),
@@ -99,7 +103,6 @@ class context {
 
     return Object.freeze({ post, get, del });
   }
-
 
   #values(fileName) {
     const filePath = path.join(process.cwd(), "values", `${fileName}.json`);
@@ -192,7 +195,7 @@ class context {
       return { tag, values: envFile?.values };
     }
 
-    return { tag, values: {} }
+    return { tag, values: {} };
   }
 }
 

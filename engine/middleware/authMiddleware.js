@@ -1,3 +1,5 @@
+const { setAuthUser } = require("../context/requestStorage");
+
 const authMiddleware = (req, res, next) => {
   const token = req.header("Authorization");
 
@@ -17,11 +19,10 @@ const authMiddleware = (req, res, next) => {
       ...userData,
       user_id: userData._id,
     };
-    context.user.data = user;
-
     req.user = user;
 
-    // Continue to the next middleware or route handler
+    setAuthUser(user);
+
     next();
   } catch (err) {
     return res.status(401).json({ message: "Invalid token" });

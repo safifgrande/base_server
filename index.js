@@ -9,6 +9,10 @@ const Sentry = require("@sentry/node");
 
 const fs = require("fs");
 const path = require("path");
+const {
+  requestStorageMiddleware,
+  asyncLocalStorage,
+} = require("./engine/context/requestStorage");
 const modulesPath = path.join(__dirname, "http-api");
 
 const app = express();
@@ -16,10 +20,10 @@ const port = process.env.PORT || 6000;
 
 app.use(express.json());
 app.use(cors());
+app.use(requestStorageMiddleware);
 
 const bridge = new BridgeMiddleware();
 app.use((req, res, next) => bridge.initiate(req, res, next));
-
 // API
 fs.readdirSync(modulesPath).forEach((folder) => {
   const moduleRoutePath = path.join(modulesPath, folder, `${folder}.route.js`);
