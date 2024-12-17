@@ -1,10 +1,5 @@
 [
   {
-    "path": "/clientExample",
-    "handler": "example",
-    "private": true
-  },
-  {
     "path": "/dea_duluan",
     "handler": "dea_duluan",
     "private": true

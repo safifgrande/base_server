@@ -1,4 +1,4 @@
-module.exports = async () => {
+exports = async () => {
   console.log(context.user.data.user_id);
 
   // return context.user.data.user_id;

@@ -20,7 +20,7 @@ async function request(url, jwt) {
   try {
     const config = { headers: {} };
     if (jwt) config.headers["Authorization"] = jwt;
-    return await axios.post(url, {}, config).then((res) => res.data);
+    return await axios.post(url, { data: 'coba_data' }, config).then((res) => res.data);
   } catch (e) {
     return e.message;
   }
